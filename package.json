@@ -1,11 +1,14 @@
 {
   "name": "ckwblog",
   "version": "1.0.0",
-  "description": "Hello This is CkwBlog",
-  "author": "KaiKai",
-  "private": true,
+  "description": "CkwBlog",
+  "author": {
+    "name": "KaiKai",
+    "email": "1035759181@qq.com"
+  },
+  "private": false,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server --experimental-modules",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate"

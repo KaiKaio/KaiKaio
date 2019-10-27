@@ -1,9 +1,16 @@
 <template>
-  <div>
-    <nuxt />
+  <div id="app" v-cloak>
+    <MainView />
   </div>
 </template>
 
-<style>
+<script>
+import MainView from '@/components/layout/main'
 
-</style>
+export default {
+  name: 'App',
+  components: {
+    MainView,
+  }
+}
+</script>
