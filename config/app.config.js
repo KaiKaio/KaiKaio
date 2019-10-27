@@ -7,7 +7,7 @@
 // export const meta = {
 exports.meta = {
   title: 'KaiKai',
-  description: '一代人终将老去，但有人正年轻',
+  description: '一代人终将老去，但也总有人正年轻',
   author: 'KaiKaio',
   email: '1035759181@qq.com',
 }

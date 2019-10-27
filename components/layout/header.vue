@@ -6,8 +6,8 @@
           <use xlink:href="#icon-cat" />
         </svg>
         <span class="logo-font">KaiKaio</span>
-        <span class="header-slogan" v-text="$appConfig.description"></span>
       </div>
+      <p class="header-slogan" v-text="$appConfig.meta.description"></p>
     </div>
   </header>
 </template>
@@ -27,17 +27,18 @@ header {
     width: 75vw;
     margin: 0 auto;
     .logo {
-      font-size: 22px;
-      display: flex;
-      align-items: center;
       .icon.logo-icon {
         width: 32px;
         height: 32px;
         fill: #fff;
       }
       .logo-font {
+        font-size: 22px;
         margin-left: 10px;
       }
+    }
+    .header-slogan {
+      margin: 6px 0px 0px 0px;
     }
   }
 }
