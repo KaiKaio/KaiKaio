@@ -20,11 +20,15 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  background-color:#3C3C3C;
+  position: fixed;
+  background-color: rgba(00, 00, 00, 0.7);
+  backdrop-filter: blur(5px);
   color: #fff;
   padding: 10px 0px;
+  width: 100vw;
+  height: 57px;
   .header-container {
-    width: 75vw;
+    width: 75%;
     margin: 0 auto;
     .logo {
       .icon.logo-icon {

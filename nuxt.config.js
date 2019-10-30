@@ -4,11 +4,10 @@
  * @author KaiKaio <https://github.com/KaiKaio>
 */
 
-// import appConfig from './config/app.config'
-const appConfig = require('./config/app.config')
+import appConfig from './config/app.config'
+import apiConfig from './config/api.config'
 
-// export default {
-module.exports = {
+export default {
   mode: 'universal',
 
   head: {
@@ -22,7 +21,7 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
     script: [
-      { src: '//at.alicdn.com/t/font_1477103_tlqwq4hpg2.js' },
+      { src: '//at.alicdn.com/t/font_1477103_kfr5g2150yg.js' },
     ],
   },
 
@@ -43,6 +42,7 @@ module.exports = {
   ],
 
   modules: [
+    ['@nuxtjs/axios', { baseURL: apiConfig.baseUrl }]
   ],
 
   build: {

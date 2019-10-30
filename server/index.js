@@ -1,11 +1,17 @@
+/**
+ * @file App入口
+ * @lastModifiedTime 2019-10-28 17:19:13
+ * @author KaiKaio <https://github.com/KaiKaio>
+*/
+
 const Koa = require('koa')
 const consola = require('consola')
+const requireESM = require('esm')(module)
 const { Nuxt, Builder } = require('nuxt')
 
 const app = new Koa()
 
-// Import and Set Nuxt.js options
-const config = require('../nuxt.config.js')
+const config = requireESM('../nuxt.config.js').default
 config.dev = app.env !== 'production'
 
 async function start () {

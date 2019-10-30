@@ -1,12 +1,17 @@
 <template>
-  <div id="home">
+  <div id="main-container">
+    <ArticleList />
   </div>
 </template>
 
 <script>
+import ArticleList from '@/components/archive/ArticleList'
 
 export default {
-  name: 'Home',
+  name: 'MainContainer',
+  components: {
+    ArticleList,
+  }
 }
 </script>
 
