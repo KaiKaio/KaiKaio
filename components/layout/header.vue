@@ -1,7 +1,7 @@
 <template>
   <header id="header">
     <div class="header-container">
-      <div class="logo">
+      <div class="logo" @click="toHome">
         <svg class="icon logo-icon" aria-hidden="true">
           <use xlink:href="#icon-cat" />
         </svg>
@@ -9,28 +9,43 @@
       </div>
       <p class="header-slogan" v-text="$appConfig.meta.description"></p>
     </div>
+    <Music />
   </header>
 </template>
 
 <script>
+import Music from './music'
+
 export default {
   name: 'Header',
+  components: {
+    Music
+  },
+  methods: {
+    toHome() {
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 header {
   position: fixed;
+  left: 10vw;
   background-color: rgba(00, 00, 00, 0.7);
   backdrop-filter: blur(5px);
   color: #fff;
-  padding: 10px 0px;
-  width: 100vw;
-  height: 57px;
+  width: 80vw;
+  height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0rem;
+  z-index: 10;
   .header-container {
-    width: 75%;
-    margin: 0 auto;
+    margin-left: 10rem;
     .logo {
+      cursor: pointer;
       .icon.logo-icon {
         width: 32px;
         height: 32px;

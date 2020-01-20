@@ -1,7 +1,7 @@
 {
   "name": "ckwblog",
   "version": "1.0.0",
-  "description": "CkwBlog",
+  "description": "KaiKaioBlog",
   "author": {
     "name": "KaiKai",
     "email": "1035759181@qq.com"
@@ -16,8 +16,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.8.0",
     "cross-env": "^5.2.0",
-    "element-ui": "^2.4.11",
+    "js-base64": "^2.5.1",
     "koa": "^2.6.2",
+    "marked": "^0.8.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0"
   },

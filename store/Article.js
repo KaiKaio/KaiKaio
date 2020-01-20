@@ -6,8 +6,13 @@ export const state = ()=> {
 
 export const actions =  {
   fetchArticleList({ commit }) {
-    this.$axios.get('/Article/').then((res)=> {
-      commit('updateArticleList', res.data.data);
+    return new Promise((resolve, reject) => {
+      this.$axios.get('/Article/').then((res)=> {
+        commit('updateArticleList', res.data.data);
+        resolve()
+      }).catch(err => {
+        reject(err)
+      })
     })
   },
 }

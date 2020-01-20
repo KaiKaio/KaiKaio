@@ -14,7 +14,7 @@ exports.meta = {
 
 // export const color = {
 exports.color = {
-  primary: '#000'
+  primary: '#0088f5'
 }
 
 // export default {

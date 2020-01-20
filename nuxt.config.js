@@ -9,6 +9,10 @@ import apiConfig from './config/api.config'
 
 export default {
   mode: 'universal',
+  // modern: true,
+  env: {
+    baseUrl: apiConfig.baseUrl,
+  },
 
   head: {
     title: `${appConfig.meta.title}`,
@@ -21,20 +25,18 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
     script: [
-      { src: '//at.alicdn.com/t/font_1477103_kfr5g2150yg.js' },
+      { src: '//at.alicdn.com/t/font_1477103_28x39s93ft5h.js' },
     ],
   },
 
-  loading: { color: '#fff' },
+  loading: { color: appConfig.color.primary },
 
   css: [
-    'element-ui/lib/theme-chalk/index.css',
     'normalize.css/normalize.css',
     '@/assets/styles/app.scss',
   ],
 
   plugins: [
-    '@/plugins/element-ui',
     { src: '@/plugins/vue-extend' },
   ],
 
@@ -42,11 +44,10 @@ export default {
   ],
 
   modules: [
-    ['@nuxtjs/axios', { baseURL: apiConfig.baseUrl }]
+    ['@nuxtjs/axios', { baseURL: apiConfig.baseUrl, timeout: 8000 } ]
   ],
 
   build: {
-    transpile: [/^element-ui/],
     extend (config, ctx) {
     }
   }

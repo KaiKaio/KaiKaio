@@ -1,6 +1,7 @@
 <template>
   <div id="main">
     <Header />
+
     <client-only>
       <Background />
     </client-only>
@@ -16,24 +17,22 @@
 
 <script>
 import Header from './header'
-
 import Background from '@/components/widget/background'
-
 
 export default {
   name: 'Main',
   components: {
     Header,
-    Background,
+    Background
   }
 }
 </script>
 
 <style lang="scss">
 main {
-  padding-top: 77px;
   width: 75%;
-  margin: 0 auto;
+  margin: 0rem auto 0rem;
+  padding: 10rem 0rem;
 }
 
 .transitionRouter-enter-active,

@@ -3,13 +3,16 @@
  * @lastModifiedTime 2019-10-29 15:08:37
  * @author KaiKaio <https://github.com/KaiKaio>
 */
-
-const Development = 'http://localhost:4000';
-const Production = 'https://www.rcment.top/api';
+import { NODE_ENV } from '../environment'
 
 const apiConfig = {
-  proxyUrl: '/proxy/',
-  baseUrl: 'http://localhost:4000'
+  // proxyUrl: '/proxy/',
+  development: {
+    baseUrl: 'http://localhost:4000',
+  },
+  production: {
+    baseUrl: 'https://www.rcment.top/api',
+  }
 }
 
-export default apiConfig
+export default apiConfig[NODE_ENV]

@@ -8,7 +8,7 @@
         <nuxt-link class="item-title" :to="`/article/${index}`" :title="item.title" v-text="item.title" />
         <div class="item-content">{{ item.description }}</div>
         <div class="item-create-time">
-          <svg class="icon" aria-hidden="true">
+          <svg class="icon date" aria-hidden="true">
             <use xlink:href="#icon-md-shijian" />
           </svg>
           {{ item.createtime }}
@@ -76,6 +76,13 @@ export default {
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         margin-bottom: 6px;
+
+      }
+      > .item-create-time {
+        > .icon.date {
+          width: 1.4rem;
+          height: 1.4rem;
+        }
       }
     }
     .item-image {
