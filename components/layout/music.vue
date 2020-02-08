@@ -2,7 +2,7 @@
   <div id="music">
     <div class="music-player">
 
-      <div>
+      <div class="icons-wrapper">
         <svg class="icon player-icon" @click="swichIndex('prev')" aria-hidden="true">
           <use xlink:href="#icon-audio-up" />
         </svg>
@@ -15,13 +15,17 @@
         <svg class="icon player-icon" @click="swichIndex('next')" aria-hidden="true">
           <use xlink:href="#icon-audio-down" />
         </svg>
+
+        <svg @click="handleMusicList" class="icon player-icon play-list" aria-hidden="true">
+          <use xlink:href="#icon-yinleliebiao1"/>
+        </svg>
       </div>
 
       <div class="audio-progress" ref="audioProgress" @mousedown="controlAudioProgress($event)">
         <span class="bar" :style="progressStyle"></span>
       </div>
 
-      <div class="music-detail" @click="$router.push('music_detail')">
+      <div class="music-detail" @click="$router.push('/music_detail')">
         <span v-if="sourceUrl.length > 0">{{ sourceUrl[musicIndex].title }} - {{ sourceUrl[musicIndex].singer }}</span>
         <span v-else>暂无歌曲</span>
       </div>
@@ -31,6 +35,15 @@
     <audio v-if="clickSwich" @ended="onEnded" ref="homeAudio" @timeupdate="timeUpdate">
       <source v-if="sourceUrl.length > 0" :src="sourceUrl[musicIndex].url" type="audio/mpeg">
     </audio>
+
+    <ul class="music-list" v-show="musicList">
+      <h4>播放列表</h4>
+      <li :class="{'active': index === musicIndex}" v-for="(item, index) in sourceUrl" :key="item._id" @click="selectMusic(index)">
+        <span>{{ item.title }}</span>
+        <span>{{ item.singer }}</span>
+      </li>
+    </ul>
+
   </div>
 </template>
 
@@ -45,7 +58,8 @@ export default {
       duration: '00:00',
       currentTime: '00:00',
       progressStyle: {width: '0%'},
-      clickSwich: true
+      clickSwich: true,
+      musicList: false
     }
   },
 
@@ -80,6 +94,14 @@ export default {
       musicSwich: 'Music/musicSwich',
       updateCurrentTime: 'Music/updateCurrentTime'
     }),
+
+    selectMusic(index) {
+      this.swichIndex(index)
+    },
+
+    handleMusicList() {
+      this.musicList = !this.musicList
+    },
 
     // 播放控制
     playMusic() {
@@ -179,19 +201,30 @@ export default {
 
 <style lang="scss" scoped>
 #music {
-  width: 20rem;
+  width: 14rem;
+  margin-left: auto;
+  position: relative;
   .music-player {
     color: #FFF;
-    .player-icon {
-      fill: #FFF;
-      width: 1rem;
-      height: 1rem;
-      cursor: pointer;
-      transition: all .3s;
-      margin-right: 1rem;
-    }
-    .player-icon:hover {
-      fill: rgba(5, 180, 147, 1);
+    .icons-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .player-icon {
+        fill: #FFF;
+        width: 0.8rem;
+        height: 0.8rem;
+        cursor: pointer;
+        transition: all .3s;
+        margin-right: 1rem;
+        &.play-list {
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+      }
+      .player-icon:hover {
+        fill: rgba(5, 180, 147, 1);
+      }
     }
     .audio-progress {
       position: relative;
@@ -211,9 +244,81 @@ export default {
       margin-top: 0.6rem;
       cursor: pointer;
       transition: all .3s;
+      font-size: 0.8rem;
       &:hover {
         color: rgba(5, 180, 147, 1);
       }
+    }
+  }
+
+  .music-list {
+    position: absolute;
+    margin-top: 1rem;
+    padding: 0rem 0.4rem 0.6rem;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    list-style: none;
+    max-height: 10rem;
+    overflow-y: auto;
+    color: #666;
+    box-shadow: 0 2px 6px #fff;
+    animation-name: musicListAni;
+    animation-duration: 1s;
+    animation-fill-mode: none;
+    width: 100%;
+
+    @keyframes musicListAni {
+      0% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        transition-timing-function: ease-in;
+        opacity: 0;
+      }
+      40% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        transition-timing-function: ease-in;
+      }
+      60% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+      }
+      80% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+      }
+      100% {
+        transform: perspective(400px);
+      }
+    }
+    > li {
+      position: relative;
+      padding: 0.4rem 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all .3s;
+      border-radius: 0.3rem;
+      &:hover {
+        background: rgb(221, 216, 216);
+      }
+      &.active::before {
+        position: absolute;
+        left: 0rem;
+        height: calc(100% - 0.8rem);
+        content: '';
+        display: block;
+        width: 0.3rem;
+        background: #05b493;
+      }
+    }
+    > h4 {
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.3rem;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1;
+      box-shadow: 0 2px 6px #fff;
     }
   }
 }

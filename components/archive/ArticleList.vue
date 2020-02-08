@@ -39,7 +39,6 @@ export default {
 <style lang="scss">
 #article-list {
   width: 50%;
-  margin: 0 auto;
   .article-list-item {
     color: #666;
     background-color: #FFF;
@@ -48,40 +47,40 @@ export default {
     height: 100px;
     overflow: hidden;
     display: flex;
+    justify-content: space-between;
     cursor: pointer;
     margin-bottom: 18px;
     transition: all .3s;
     .item-text-content {
       width: calc(65% - 12px);
-      margin-left: 12px;
       font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       .item-title {
         transition: all .3s;
         font-size: 16px;
         display: inline-block;
         text-decoration: none;
         color: inherit;
-        margin: 0px 0px 10px 0px;
-      }
-      .item-title:hover {
-        margin: 0px 0px 10px 10px;
-        color: #000;
-        text-decoration:underline;
+        &:hover {
+          margin: 0px 0px 0px 10px;
+          color: #000;
+          text-decoration:underline;
+        }
       }
       .item-content {
-        height: 52px;
+        height: 3rem;
         text-overflow: ellipsis;
         display: -webkit-box;
         overflow: hidden;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
-        margin-bottom: 6px;
-
       }
       > .item-create-time {
         > .icon.date {
-          width: 1.4rem;
-          height: 1.4rem;
+          width: 1.1rem;
+          height: 1.1rem;
         }
       }
     }

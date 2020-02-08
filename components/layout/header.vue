@@ -6,10 +6,11 @@
           <use xlink:href="#icon-cat" />
         </svg>
         <span class="logo-font">KaiKaio</span>
+        <p class="header-slogan" v-text="$appConfig.meta.description"></p>
       </div>
-      <p class="header-slogan" v-text="$appConfig.meta.description"></p>
+
+      <Music />
     </div>
-    <Music />
   </header>
 </template>
 
@@ -32,32 +33,34 @@ export default {
 <style lang="scss" scoped>
 header {
   position: fixed;
-  left: 10vw;
+  top: 0rem;
+  left: 0rem;
   background-color: rgba(00, 00, 00, 0.7);
   backdrop-filter: blur(5px);
   color: #fff;
-  width: 80vw;
-  height: 6rem;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 2rem 0rem;
+  padding: 1rem 0rem;
   z-index: 10;
   .header-container {
-    margin-left: 10rem;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
     .logo {
       cursor: pointer;
       .icon.logo-icon {
-        width: 32px;
-        height: 32px;
+        width: 2rem;
+        height: 2rem;
         fill: #fff;
       }
       .logo-font {
-        font-size: 22px;
-        margin-left: 10px;
+        font-size: 1.4rem;
+        margin-left: 0.2rem;
       }
     }
     .header-slogan {
-      margin: 6px 0px 0px 0px;
+      font-size: 0.8rem;
+      margin: 0.4rem 0px 0px 0px;
     }
   }
 }

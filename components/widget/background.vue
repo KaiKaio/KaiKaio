@@ -1,12 +1,31 @@
 <template>
   <div class="global-background">
-    <div class="background-image"></div>
+    <div class="background-image" :style="{
+      backgroundImage: `url(${backgroundUrl})`
+    }"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Background',
+  data() {
+    return {
+      backgroundUrl: ''
+    }
+  },
+  mounted() {
+    this.fetchBackground()
+  },
+  methods: {
+    fetchBackground() {
+      this.$axios.get('/Background/').then((res)=> {
+        this.backgroundUrl = res.data.data[0].url
+      }).catch(err => {
+        console.log('获取背景失败', err)
+      })
+    }
+  }
 }
 </script>
 
@@ -22,7 +41,7 @@ export default {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url(/images/background.png);
+    // background: url(/images/background.png);
     background-position: center center;
     background-size: cover;
   }

@@ -30,9 +30,9 @@ export default {
 
 <style lang="scss">
 main {
-  width: 75%;
+  width: 80%;
   margin: 0rem auto 0rem;
-  padding: 10rem 0rem;
+  padding: 5.6rem 0rem;
 }
 
 .transitionRouter-enter-active,

@@ -8,7 +8,7 @@ import { NODE_ENV } from '../environment'
 const apiConfig = {
   // proxyUrl: '/proxy/',
   development: {
-    baseUrl: 'http://localhost:4000',
+    baseUrl: 'http://localhost:4000/api',
   },
   production: {
     baseUrl: 'https://www.rcment.top/api',

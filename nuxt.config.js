@@ -14,27 +14,39 @@ export default {
     baseUrl: apiConfig.baseUrl,
   },
 
-  head: {
-    title: `${appConfig.meta.title}`,
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, user-scalable=no' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    ],
-    script: [
-      { src: '//at.alicdn.com/t/font_1477103_28x39s93ft5h.js' },
-    ],
+  loading: { color: appConfig.color.primary },
+  cache: {
+    max: 100,
+    maxAge: 1000 * 60 * 15
   },
 
-  loading: { color: appConfig.color.primary },
+  head: {
+    title: `${appConfig.meta.title}`,
+    titleTemplate: `%s | ${appConfig.meta.title}`,
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'author', content: appConfig.meta.email },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, user-scalable=no' },
+      { hid: 'keywords', name: 'keywords', content: appConfig.meta.keywords },
+      { hid: 'description', name: 'description', content: appConfig.meta.description }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: '//at.alicdn.com/t/font_1477103_burjo2rs4fk.js' },
+    ],
+  },
 
   css: [
     'normalize.css/normalize.css',
     '@/assets/styles/app.scss',
   ],
+
+  icon: {
+    iconSrc: '/static/icon.png',
+    sizes: [16, 120, 144, 152]
+  },
 
   plugins: [
     { src: '@/plugins/vue-extend' },

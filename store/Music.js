@@ -42,12 +42,14 @@ export const mutations =  {
         state.playIndex = state.playIndex - 1
       }
 
-    } else {
+    } else if (mark === 'next') {
       if(state.playIndex === state.MusicList.length - 1) {
         state.playIndex = 0
       } else {
         state.playIndex = state.playIndex + 1
       }
+    } else {
+      state.playIndex = mark
     }
   },
 

@@ -14,12 +14,6 @@
       </div>
 
       <div class="toggle-box">
-        <button class="toggle-btn"
-          >
-          <svg class="icon player-icon" aria-hidden="true">
-            <use xlink:href="#icon-prev-copy" />
-          </svg>
-        </button>
         <transition name="module" mode="out-in">
           <button
             key="pause"
@@ -43,19 +37,12 @@
             </svg>
           </button>
         </transition>
-        <button
-            class="toggle-btn"
-          >
-            <svg class="icon player-icon" aria-hidden="true">
-              <use xlink:href="#icon-next" />
-            </svg>
-          </button>
       </div>
 
     </div>
 
     <div class="song-info">
-      <div :style="{transform: `translateY(${transY}px)`}">
+      <div :style="{transform: `translateY(${transY}rem)`}">
         <p
           class="lrc"
           :class="{'active': currentContent.dataTime === item.dataTime}"
@@ -83,7 +70,7 @@ export default {
       skeletonFlag: false,
       lrc: [],
       currentContent: '',
-      transY: 40,
+      transY: 2,
       transYSwitch: 0,
     }
   },
@@ -177,7 +164,7 @@ export default {
             } else { // 字句变化，TransLateY - 40 , 高亮句改变
 
               if(this.transYSwitch > 1) {
-                this.transY -= 40
+                this.transY -= 2
               } else {
                 this.transYSwitch += 1
               }
@@ -193,7 +180,7 @@ export default {
 
     musicIndex: function() {
       this.parseLrc()
-      this.transY = 40
+      this.transY = 2
       this.transYSwitch = 0
       this.currentContent = ''
       this.skeletonFlag = false
@@ -205,19 +192,18 @@ export default {
 <style lang="scss">
 #music_detail {
   color: #fff;
-  padding-bottom: 10rem;
   width: 100%;
   .albumart-wrapper {
     position: relative;
     width: 100%;
-    height: 38rem;
+    height: 26rem;
     margin: 0 auto;
     .albumart {
       position: absolute;
-      width: 38rem;
-      height: 38rem;
+      width: 26rem;
+      height: 26rem;
       left: 50%;
-      margin-left: calc(-38rem / 2);
+      margin-left: calc(-26rem / 2);
       border-radius: 50%;
       opacity: .8;
       transition: all .3s;
@@ -255,12 +241,12 @@ export default {
       position: absolute;
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       top: 50%;
       transform: translateY(-50%);
       .toggle-btn {
-        width: 6rem;
-        height: 6rem;
+        width: 4rem;
+        height: 4rem;
         text-align: center;
         background-color: rgb(186, 186, 186);
         border-radius: 100%;
@@ -282,8 +268,8 @@ export default {
   }
 
   .song-info {
-    margin-top: 4rem;
-    height: 20rem;
+    margin-top: 3rem;
+    height: 10rem;
     overflow-y: hidden;
     -webkit-mask-image: linear-gradient( to bottom,
       rgba(255,255,255,0) 0,
@@ -295,12 +281,12 @@ export default {
     >div {
       transition: all .3s;
       .lrc {
-        line-height: 4rem;
-        font-size: 2rem;
+        line-height: 2rem;
+        font-size: 1rem;
         transition: all .3s;
         text-align: center;
       &.active {
-          font-size: 2.4rem;
+          font-size: 1.2rem;
           color: rgba(5, 180, 147, 1);
         }
       }

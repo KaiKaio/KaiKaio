@@ -52,7 +52,6 @@ export default {
 
 <style lang="scss">
 #article {
-  margin-top: 1rem;
   .article-detail {
     color: #555;
     background-color: #FFF;
@@ -60,35 +59,19 @@ export default {
     transition: all .3s;
     .article-content {
       padding: 12px 12px;
-      font-size: 1.4rem;
+      font-size: 1rem;
       line-height: 2;
-      h1,h2,h3,h4,h5,h6 {
-        padding: 0;
-        margin: 0 0 1.68rem;
-        font-weight: 600;
-        text-indent: 0;
-      }
       h1,h2 {
         border-bottom: 1px solid #e2e2e2;
-      }
-      h1 {
-        font-size: 2.8rem;
-      }
-      h2 {
-        font-size: 2.4rem;
-      }
-      h3 {
-        font-size: 2rem;
       }
       ul, ol {
         margin-bottom: 1rem;
         padding-left: 3rem;
       }
       p {
-        line-height: 3rem;
-        text-indent: 2.8rem;
-        margin-bottom: 1.4rem;
-        font-size: 1.4rem;
+        // line-height: 3rem;
+        // text-indent: 2.8rem;
+        // margin-bottom: 1.4rem;
       }
       img {
         display: block;
