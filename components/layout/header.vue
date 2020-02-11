@@ -35,12 +35,14 @@ header {
   position: fixed;
   top: 0rem;
   left: 0rem;
+  height: 4rem;
   background-color: rgba(00, 00, 00, 0.7);
   backdrop-filter: blur(5px);
   color: #fff;
   width: 100%;
   display: flex;
-  padding: 1rem 0rem;
+  align-items: center;
+  padding: .6rem 0rem;
   z-index: 10;
   .header-container {
     width: 80%;

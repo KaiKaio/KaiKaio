@@ -2,7 +2,7 @@
   <div id="article-list">
     <div class="article-list-item" v-for="(item, index) in articleList" :key=item.id>
       <div class="item-image"
-        :style="{ backgroundImage: 'url(/testimages/test.jpeg)',}">
+        :style="{ backgroundImage: `url(${item.cover})`,}">
       </div>
       <div class="item-text-content">
         <nuxt-link class="item-title" :to="`/article/${index}`" :title="item.title" v-text="item.title" />
@@ -38,7 +38,6 @@ export default {
 
 <style lang="scss">
 #article-list {
-  width: 50%;
   .article-list-item {
     color: #666;
     background-color: #FFF;
@@ -88,7 +87,7 @@ export default {
       transition: all .3s;
       width: 35%;
       height: 100%;
-      background-size : 100% 100%;
+      background-size : 100%;
       background-repeat: no-repeat;
       background-position: center center;
     }
@@ -96,7 +95,7 @@ export default {
   .article-list-item:hover {
     opacity: 0.9;
     .item-image {
-      background-size : 105% 105%;
+      background-size : 105%;
     }
   }
 }

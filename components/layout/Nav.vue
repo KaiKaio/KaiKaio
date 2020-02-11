@@ -26,13 +26,13 @@ export default {
 
 <style lang="scss">
 #nav {
-  width: 24%;
+  width: 15%;
   display: flex;
   flex-direction: column;
   a {
     text-decoration: none;
     color: #fff;
-    padding: 0.4rem 0.6rem;
+    padding: 1rem 0.6rem;
     transition: all .3s;
     &:hover {
       background: rgba($color: #333, $alpha: .8);
@@ -40,6 +40,7 @@ export default {
     .icon {
       width: 1.3rem;
       height: 1.3rem;
+      margin-right: .5rem;
     }
   }
 }

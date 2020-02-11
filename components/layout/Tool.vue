@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss">
 #tool {
-  width: 24%;
+  width: 15%;
   display: flex;
   flex-direction: column;
 }
