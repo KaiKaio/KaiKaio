@@ -17,6 +17,11 @@ import 'highlight.js/styles/atelier-plateau-light.css';
 
 export default {
   name: "ArticleDetail",
+  head() {
+    return {
+      title: `文章 | KaiKaio`
+    }
+  },
   data() {
     return {
       index: this.$route.params.article_id,

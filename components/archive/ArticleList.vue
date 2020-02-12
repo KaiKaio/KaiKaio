@@ -23,6 +23,11 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'ArticleList',
+  head() {
+    return {
+      title: `文章 | KaiKaio`
+    }
+  },
 
   computed: {
     ...mapState({

@@ -64,6 +64,11 @@ import { Base64 } from 'js-base64';
 
 export default {
   name: "MusicDetail",
+  head() {
+    return {
+      title: `音乐 | KaiKaio`
+    }
+  },
   data() {
     return {
       imgFlag: false,

@@ -57,9 +57,9 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   name: "About",
-  data() {
+  head() {
     return {
-
+      title: `关于 | KaiKaio`
     }
   },
 
@@ -83,11 +83,10 @@ export default {
 
 <style lang="scss">
 #about {
-  margin-top: 4.3125rem;
+  margin-top: 4.3125rem !important;
   color: #555;
   background-color: #FFF;
   opacity: 0.9;
-  transition: all .3s;
   > .about-wrapper {
     padding: 4.3125rem 2rem 1.6rem;
     position: relative;

@@ -52,7 +52,6 @@ import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Music',
-
   data() {
     return {
       duration: '00:00',
