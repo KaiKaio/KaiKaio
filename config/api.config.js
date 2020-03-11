@@ -11,7 +11,7 @@ const apiConfig = {
     baseUrl: 'http://localhost:4000/api',
   },
   production: {
-    baseUrl: 'https://www.rcment.top/api',
+    baseUrl: 'https://www.kaikaio.com/api',
   }
 }
 
