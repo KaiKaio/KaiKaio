@@ -59,14 +59,18 @@
         currentYear: 1970,
         currentWeek: 1,
         days: [],
-        weeksZh: ['一', '二', '三', '四', '五', '六', '七'],
+        weeksZh: ['一', '二', '三', '四', '五', '六', '日'],
         weeksEn: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 
         dayLiHeight: 0
       }
     },
     mounted() {
-      this.initData(null).then(() => {
+      const date = new Date()
+
+      this.initData(
+        this.formatDate(d.getFullYear(), d.getMonth() + 1, 1)
+      ).then(() => {
         this.dayLiHeight = this.$refs.dayLi[0].clientWidth
       })
     },
@@ -78,34 +82,18 @@
         return new Promise((resolve, reject) => {
           const date = cur ? new Date(cur) : new Date()
 
-          this.currentDay = date.getDate()
-          this.currentYear = date.getFullYear()
-          this.currentMonth = date.getMonth() + 1
-          this.currentWeek = date.getDay() // 星期几
+          this.currentDay = date.getDate() // 转化为 日
+          this.currentYear = date.getFullYear() // 转化为 年
+          this.currentMonth = date.getMonth() + 1 // 转化为 月
+          this.currentWeek = date.getDay() // 转化为 星期N
 
-          if (this.currentWeek == 0) this.currentWeek = 7
+          if (this.currentWeek == 0) this.currentWeek = 7 // 星期 0 等于 星期 7
 
-          const str = this.formatDate(this.currentYear, this.currentMonth, this.currentDay)
+          // const str = this.formatDate(this.currentYear, this.currentMonth, this.currentDay) // 格式化 年-月-日（ xxxx-xx-xx ）
 
-          console.log("today:" + str + "," + this.currentWeek)
-
+          // 重置日历面板
+          this.days = []
           this.days.length = 0
-
-          // 今天是周日，放在第一行第7个位置，前面6个
-          for (let i = this.currentWeek - 1; i >= 0; i--) {
-            const d = new Date(str)
-            d.setDate(d.getDate() - i)
-
-            console.log("y:" + d.getDate())
-
-            this.days.push(d)
-          }
-
-          for (let i = 1; i <= 35 - this.currentWeek; i++) {
-            const d = new Date(str)
-            d.setDate(d.getDate() + i)
-            this.days.push(d)
-          }
 
           resolve('执行完毕')
         })
@@ -159,9 +147,15 @@
       > li {
         transition: all .3s;
         &.arrow {
+          width: 1.6rem;
+          height: 1.6rem;
+          font-size: 0.8rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           background-color: #ccc;
-          padding: 0.1rem 0.3rem;
-          border-radius: 50%;
+          color: #666;
+          border-radius: 6px;
           cursor: pointer;
           &:hover {
             background-color:#8d8d8d;

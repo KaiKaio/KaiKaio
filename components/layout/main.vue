@@ -42,8 +42,8 @@ export default {
   },
   mounted() {
     const middleWidth = this.$refs.middle.$el.clientWidth // 中间宽度
-    const totalWidth = middleWidth / 0.67
-    this.navWidth = totalWidth * 0.15
+    const totalWidth = middleWidth / 0.5
+    this.navWidth = totalWidth * 0.22
 
     this.marginLeft = this.$refs.main.getBoundingClientRect().left
   },
@@ -59,7 +59,7 @@ main {
   > #music_detail,
   > #about,
   > article {
-    width: 67%;
+    width: 50%;
     margin: 0 auto;
   }
 }
