@@ -25,7 +25,6 @@
 
     <ul class="days">
       <li ref="dayLi" :style="{ height: dayLiHeight + 'px' }" :key="index" v-for="(day, index) in days">
-        <!--本月-->
         <span v-if="day.getMonth() + 1 != currentMonth" class="other-month">{{ day.getDate() }}</span>
         <span
           :style="{ height: dayLiHeight + 'px' }"
@@ -38,7 +37,6 @@
               day.getDate() == new Date().getDate()
           }"
         >
-          <!--today-->
           <span>
             {{ day.getDate() }}
           </span>
@@ -66,8 +64,7 @@
       }
     },
     mounted() {
-      const date = new Date()
-
+      const d = new Date()
       this.initData(
         this.formatDate(d.getFullYear(), d.getMonth() + 1, 1)
       ).then(() => {
@@ -87,13 +84,27 @@
           this.currentMonth = date.getMonth() + 1 // 转化为 月
           this.currentWeek = date.getDay() // 转化为 星期N
 
-          if (this.currentWeek == 0) this.currentWeek = 7 // 星期 0 等于 星期 7
+          if (this.currentWeek == 0) this.currentWeek = 7
 
-          // const str = this.formatDate(this.currentYear, this.currentMonth, this.currentDay) // 格式化 年-月-日（ xxxx-xx-xx ）
+          const str = this.formatDate(this.currentYear, this.currentMonth, this.currentDay)
 
-          // 重置日历面板
-          this.days = []
           this.days.length = 0
+
+          // 今天是周日，放在第一行第7个位置，前面6个
+          for (let i = this.currentWeek - 1; i >= 0; i--) {
+            const d = new Date(str)
+            d.setDate(d.getDate() - i)
+
+            console.log("y:" + d.getDate())
+
+            this.days.push(d)
+          }
+
+          for (let i = 1; i <= 42 - this.currentWeek; i++) {
+            const d = new Date(str)
+            d.setDate(d.getDate() + i)
+            this.days.push(d)
+          }
 
           resolve('执行完毕')
         })
