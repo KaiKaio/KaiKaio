@@ -81,18 +81,17 @@ header {
   position: fixed;
   top: 0rem;
   left: 0rem;
-  height: 4rem;
-  background-color: rgba(00, 00, 00, 0.7);
+  height: 5rem;
+  background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
   color: #fff;
   width: 100%;
   display: flex;
   align-items: center;
-  padding: .6rem 0rem;
   z-index: 10;
   font-weight: 700;
   .header-container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     .logo {

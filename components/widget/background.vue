@@ -36,6 +36,7 @@ export default {
   height: 100%;
   top: 0px;
   left: 0px;
+  filter: brightness(0.9);
   z-index: -1;
   > .background-image {
     position: absolute;

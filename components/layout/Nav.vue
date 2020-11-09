@@ -1,5 +1,5 @@
 <template>
-  <nav id="nav" :style="{ width: navWidth + 'px'}">
+  <nav id="nav">
     <nuxt-link v-for="item in navList" :key="item.name" :to="item.link">
       <svg class="icon date" aria-hidden="true">
         <use :xlink:href="`#${item.icon}`" />
@@ -12,9 +12,6 @@
 <script>
 export default {
   name: 'Nav',
-  props: {
-    navWidth: Number
-  },
   data() {
     return {
       navList: [
@@ -31,15 +28,18 @@ export default {
 #nav {
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: sticky;
+  height: fit-content;
   top: 5.2rem;
+  width: 20%;
+  min-width: 200px;
   a {
     text-decoration: none;
     color: #fff;
     padding: 1rem 0.6rem;
     transition: all .3s;
     &:hover {
-      background: rgba($color: #333, $alpha: .8);
+      background: rgba($color: #333, $alpha: .5);
     }
     .icon {
       width: 1.3rem;

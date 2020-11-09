@@ -1,5 +1,5 @@
 <template>
-  <div id="tool" :style="{ width: navWidth + 'px', right: marginLeft + 'px'}">
+  <div id="tool">
     <Calendar />
   </div>
 </template>
@@ -23,8 +23,7 @@ export default {
 #tool {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 5.2rem;
-  right: 0rem;
+  width: 20%;
+  min-width: 252px;
 }
 </style>

@@ -7,13 +7,13 @@
     </client-only>
 
     <main ref="main">
-      <Nav :navWidth="navWidth"/>
+      <Nav />
 
       <transition name="transitionRouter">
         <nuxt ref="middle" keep-alive />
       </transition>
 
-      <Tool :navWidth="navWidth" :marginLeft="marginLeft" />
+      <Tool />
     </main>
 
   </div>
@@ -35,32 +35,25 @@ export default {
     Tool
   },
   data() {
-    return {
-      navWidth: 0,
-      marginLeft: 0
-    }
+    return {}
   },
-  mounted() {
-    const middleWidth = this.$refs.middle.$el.clientWidth // 中间宽度
-    const totalWidth = middleWidth / 0.5
-    this.navWidth = totalWidth * 0.22
-
-    this.marginLeft = this.$refs.main.getBoundingClientRect().left
-  },
+  mounted() {},
 }
 </script>
 
 <style lang="scss">
 main {
-  width: 80%;
+  width: 90%;
   margin: 0rem auto;
-  padding: calc(4rem + .6rem * 2) 0rem 4rem;
+  padding: 6rem 0rem 4rem;
+  display: flex;
+  justify-content: space-between;
   > #main-container,
   > #music_detail,
   > #about,
   > article {
-    width: 50%;
-    margin: 0 auto;
+    width: 55%;
+    min-width: 400px;
   }
 }
 
