@@ -8,7 +8,7 @@
             <use xlink:href="#icon-seeuser" />
           </svg>
 
-          <div class="li-content">一枚Web前端开发者</div>
+          <div class="li-content">开开哦</div>
         </li>
         <li>
           <svg class="icon about-icon" aria-hidden="true">
@@ -43,7 +43,7 @@
           </svg>
 
           <div class="li-content">
-            想到想说的再说吧..
+            一枚前端开发~
           </div>
 
         </li>
