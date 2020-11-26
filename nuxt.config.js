@@ -14,10 +14,6 @@ export default {
     baseUrl: apiConfig.baseUrl,
   },
 
-  router:{
-    base:"http://cdn.kaikaio.com/" //此为根目录，如果有具体目录需求按实际情况写
-  },
-
   loading: { color: appConfig.color.primary },
   cache: {
     max: 100,
@@ -64,7 +60,6 @@ export default {
   ],
 
   build: {
-    extend (config, ctx) {
-    }
+    publicPath: 'http://cdn.kaikaio.com/_nuxt/'
   }
 }
