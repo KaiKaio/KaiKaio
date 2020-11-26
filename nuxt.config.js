@@ -60,6 +60,6 @@ export default {
   ],
 
   build: {
-    publicPath: 'http://cdn.kaikaio.com/_nuxt/'
+    publicPath: 'https://cdn.kaikaio.com/_nuxt/'
   }
 }
