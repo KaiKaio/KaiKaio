@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     fetchBackground() {
-      this.$axios.get('/Background/').then((res)=> {
+      this.$axios.get('/Background').then((res)=> {
         this.backgroundUrl = res.data.data[0].url
       }).catch(err => {
         console.log('获取背景失败', err)

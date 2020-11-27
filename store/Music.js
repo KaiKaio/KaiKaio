@@ -9,7 +9,7 @@ export const state = ()=> {
 
 export const actions =  {
   fetchMusicList({ commit }) {
-    this.$axios.get('/Music/').then(res=> {
+    this.$axios.get('/Music').then(res=> {
       commit('updateMusicList', res.data.data);
     }).catch(err => {
       console.log(err, '获取音乐列表错误')
