@@ -6,7 +6,7 @@
       <Background />
     </client-only>
 
-    <main ref="main">
+    <main ref="main" :style="{ minHeight: `calc(${mainHeight}px - 6rem)`}">
       <Nav />
 
       <transition name="transitionRouter">
@@ -14,8 +14,9 @@
       </transition>
 
       <Tool />
-    </main>
 
+    </main>
+    <Footer ref="footer"/>
   </div>
 </template>
 
@@ -23,6 +24,7 @@
 import Header from '@/components/layout/header'
 import Nav from '@/components/layout/Nav'
 import Tool from '@/components/layout/Tool'
+import Footer from '@/components/layout/Footer'
 
 import Background from '@/components/widget/background'
 
@@ -32,12 +34,23 @@ export default {
     Header,
     Background,
     Nav,
-    Tool
+    Tool,
+    Footer
   },
   data() {
-    return {}
+    return {
+      mainHeight: 0,
+    }
   },
-  mounted() {},
+  mounted() {
+    this.initMainHeight();
+  },
+  methods: {
+
+    initMainHeight() {
+      this.mainHeight = document.documentElement.clientHeight - this.$refs.footer.$el.offsetHeight;
+    }
+  }
 }
 </script>
 
@@ -45,7 +58,7 @@ export default {
 main {
   width: 90%;
   margin: 0rem auto;
-  padding: 6rem 0rem 4rem;
+  padding: 6rem 0rem 0rem;
   display: flex;
   justify-content: space-between;
   > #main-container,
