@@ -24,7 +24,7 @@
 import Header from '@/components/layout/header'
 import Nav from '@/components/layout/Nav'
 import Tool from '@/components/layout/Tool'
-import Footer from '@/components/layout/Footer'
+import Footer from '@/components/layout/footer'
 
 import Background from '@/components/widget/background'
 
