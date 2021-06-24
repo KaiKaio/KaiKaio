@@ -4,16 +4,16 @@
 
       <div class="icons-wrapper">
         <svg class="icon player-icon" @click="swichIndex('prev')" aria-hidden="true">
-          <use xlink:href="#icon-audio-up" />
+          <use xlink:href="#icon-prev-copy" />
         </svg>
 
         <svg @click="playMusic" class="icon player-icon" aria-hidden="true">
-          <use v-show="playStatus === true" xlink:href="#icon-zantingtingzhi" />
-          <use v-show="playStatus === false" xlink:href="#icon-bofang" />
+          <use v-show="playStatus === true" xlink:href="#icon-pause" />
+          <use v-show="playStatus === false" xlink:href="#icon-play" />
         </svg>
 
         <svg class="icon player-icon" @click="swichIndex('next')" aria-hidden="true">
-          <use xlink:href="#icon-audio-down" />
+          <use xlink:href="#icon-next" />
         </svg>
 
         <svg @click="handleMusicList" class="icon player-icon play-list" aria-hidden="true">
@@ -217,8 +217,8 @@ export default {
         transition: all .3s;
         margin-right: 1rem;
         &.play-list {
-          width: 1.2rem;
-          height: 1.2rem;
+          width: 1.3rem;
+          height: 1.3rem;
         }
       }
       .player-icon:hover {
