@@ -6,7 +6,7 @@
       <Background />
     </client-only>
 
-    <main ref="main" :style="{ minHeight: `calc(${mainHeight}px - 6rem)`}">
+    <main ref="main" :style="{ paddingBottom: `${footerHeight}px`}">
       <Nav />
 
       <transition name="transitionRouter">
@@ -16,7 +16,7 @@
       <Tool />
 
     </main>
-    <Footer ref="footer"/>
+    <Footer ref="footer" :height="footerHeight" />
   </div>
 </template>
 
@@ -39,7 +39,7 @@ export default {
   },
   data() {
     return {
-      mainHeight: 0,
+      footerHeight: 0,
     }
   },
   mounted() {
@@ -48,7 +48,7 @@ export default {
   methods: {
 
     initMainHeight() {
-      this.mainHeight = document.documentElement.clientHeight - this.$refs.footer.$el.offsetHeight;
+      this.footerHeight = this.$refs.footer.$el.offsetHeight;
     }
   }
 }

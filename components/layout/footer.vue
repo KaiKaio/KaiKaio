@@ -9,18 +9,13 @@
 <script>
 export default {
   name: 'Footer',
-  data() {
-    return {}
-  },
-
-  methods: {
-
-  },
 }
 </script>
 
 <style lang="scss" scoped>
 footer {
+  position: fixed;
+  bottom: 0px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
