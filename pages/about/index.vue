@@ -3,54 +3,29 @@
     <div class="about-wrapper">
       <img class="avatar" src="https://kaikai-bloga.oss-cn-beijing.aliyuncs.com/about/KaiAvatar.jpeg" alt="avatar">
       <ul>
-        <li>
+        <li v-for="(item, index) in aboutList" :key="index">
           <svg class="icon about-icon" aria-hidden="true">
-            <use xlink:href="#icon-seeuser" />
+            <title>{{item.description}}</title>
+            <use :xlink:href="`#${item.icon}`" />
           </svg>
 
-          <div class="li-content">开开哦</div>
-        </li>
-        <li>
-          <svg class="icon about-icon" aria-hidden="true">
-            <use xlink:href="#icon-codecodinghtmlcssprogramming" />
-          </svg>
-
-          <div class="li-content">Vue | React | Nodejs | JavaScript </div>
-        </li>
-        <li>
-          <svg class="icon about-icon" aria-hidden="true" style="fill: #0088f5">
-            <use xlink:href="#icon-xinhao1" />
-          </svg>
-
-          <div class="li-content">
-            <a target="_blank" href="https://github.com/KaiKaio">
-              <svg class="icon about-icon github" aria-hidden="true">
-                <use xlink:href="#icon-git" />
-              </svg>
-            </a>
-
-            <a target="_blank" href="https://weibo.com/chenkaiwei9">
-              <svg class="icon about-icon weibo" aria-hidden="true">
-                <use xlink:href="#icon-weibo" />
+          <div v-if="item.content" class="li-content">{{item.content}}</div>
+          <div v-if="item.linkList" class="li-content">
+            <a v-for="itemChild in item.linkList" :key="itemChild.itemChild" target="_blank" :href="itemChild.href">
+              <svg class="icon about-icon" aria-hidden="true">
+                <title>{{itemChild.description}}</title>
+                <use :xlink:href="`#${itemChild.icon}`" />
               </svg>
             </a>
           </div>
-
-        </li>
-        <li>
-          <svg class="icon about-icon" aria-hidden="true">
-            <use xlink:href="#icon-shuo" />
-          </svg>
-
-          <div class="li-content">
-            一枚前端开发~
-          </div>
-
         </li>
       </ul>
     </div>
   </div>
+
 </template>
+
+
 
 <script>
 import { mapState, mapActions } from 'vuex'
@@ -59,7 +34,47 @@ export default {
   name: "About",
   head() {
     return {
-      title: `关于 | KaiKaio`
+      title: `关于 | KaiKaio`,
+    }
+  },
+
+  data(){
+    return {
+      aboutList: [
+        {
+          description: '名字',
+          icon: 'icon-UserSettings',
+          content: '开开哦',
+        },
+        {
+          description: '技术栈',
+          icon: 'icon-code',
+          content: 'Vue \ React \ Nodejs \ JavaScript',
+        },
+        {
+          description: '社交',
+          icon: 'icon-shejiao',
+          linkList: [
+            {
+              id: 1,
+              href: 'https://github.com/KaiKaio',
+              description: 'Github',
+              icon: 'icon-git',
+            },
+            {
+              id: 2,
+              href: 'https://weibo.com/chenkaiwei9',
+              description: '微博',
+              icon: 'icon-weibo',
+            },
+          ],
+        },
+        {
+          description: '描述',
+          icon: 'icon-miaoshu',
+          content: '一枚前端开发~',
+        },
+      ]
     }
   },
 
@@ -128,7 +143,7 @@ export default {
         > .li-content {
           margin-left: 1rem;
           > a {
-            margin-right: 1rem;
+            margin-right: 0.6rem;
             color: #555;
           }
         }

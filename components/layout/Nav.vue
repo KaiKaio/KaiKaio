@@ -15,9 +15,10 @@ export default {
   data() {
     return {
       navList: [
-        {name: '文章', icon: 'icon-shouye', link: '/'},
+        {name: '文章', icon: 'icon-wenzhang', link: '/'},
         {name: '音乐', icon: 'icon-yinyue', link: '/music_detail'},
-        {name: '关于我', icon: 'icon-UserSettings', link: '/about'},
+        {name: '短句', icon: 'icon-dongtai', link: '/mood'},
+        {name: '关于我', icon: 'icon-mingpian', link: '/about'},
       ]
     }
   }
