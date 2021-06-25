@@ -49,6 +49,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import { throttle } from '@/util/common'
 
 export default {
   name: 'Music',
@@ -129,8 +130,8 @@ export default {
       this.swichIndex('next')
     },
 
-    //进度条更新
-    timeUpdate() {
+    // 进度条更新 - 节流
+    timeUpdate: throttle(function(){
       this.updateCurrentTime(this.$refs.homeAudio.currentTime) // 派发当前时间
 
       this.duration = this.transTime(this.$refs.homeAudio.duration) // 音乐总时长
@@ -138,7 +139,7 @@ export default {
       this.currentTime = this.transTime(timeStr)
       let scales = this.$refs.homeAudio.currentTime / this.$refs.homeAudio.duration // 计算出进度（百分之几）
       this.progressStyle.width = scales * 100 + '%'; // 进度条到达宽度
-    },
+    }, 1500),
 
     //鼠标点击移动播放进度
     controlAudioProgress(event) {

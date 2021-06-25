@@ -59,7 +59,6 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-
 import { Base64 } from 'js-base64';
 
 export default {
@@ -75,8 +74,7 @@ export default {
       skeletonFlag: false,
       lrc: [],
       currentContent: '',
-      transY: 2,
-      transYSwitch: 0,
+      transY: 0,
     }
   },
 
@@ -90,6 +88,7 @@ export default {
   },
 
   mounted() {
+    console.log('XX')
     // 轮询查看数据是否返回
     let checkData = setInterval(() => {
       if(this.sourceUrl.length > 0) {
@@ -151,42 +150,44 @@ export default {
           this.lrc.push(obj)
         }
       })
+    },
+
+    computedLrc(newTime){
+
+      for (let i = 0; i < this.lrc.length; i++){
+
+        if (i === this.lrc.length - 1){ // 如果是最后一句则跳出整个循环
+          this.currentContent = this.lrc[i];
+          break;
+        }
+
+        let currentTime = this.lrc[i].dataTime
+        let nextTime = this.lrc[i + 1].dataTime
+
+        if (!(newTime >= currentTime && newTime < nextTime)){ // 如果计算时间还在当前句则跳出，进入下一个循环
+          continue;
+        }
+
+        if (this.currentContent.dataTime === this.lrc[i].dataTime) { // 如果是同一句，则不做操作
+          break;
+        }
+
+        this.transY = -(i * 2);
+        this.currentContent = this.lrc[i];
+        break;
+
+      }
     }
   },
 
   watch: {
-    time: function(newTime, oldTime) {
-      for(let i = 0; i < this.lrc.length; i++){
-        if(i === this.lrc.length - 1){
-          this.currentContent = this.lrc[i]
-          break
-        } else {
-          let currentTime = this.lrc[i].dataTime
-          let nextTime = this.lrc[i + 1].dataTime
-          if(currentTime <= newTime && newTime < nextTime){
-            if(this.currentContent.dataTime === this.lrc[i].dataTime) { // 如果是同一句，则不做操作
-              break
-            } else { // 字句变化，TransLateY - 40 , 高亮句改变
-
-              if(this.transYSwitch > 1) {
-                this.transY -= 2
-              } else {
-                this.transYSwitch += 1
-              }
-
-              this.currentContent = this.lrc[i]
-
-              break
-            }
-          }
-        }
-      }
+    time: function(newTime) {
+      this.computedLrc(newTime)
     },
 
     musicIndex: function() {
       this.parseLrc()
       this.transY = 2
-      this.transYSwitch = 0
       this.currentContent = ''
       this.skeletonFlag = false
     }
@@ -273,18 +274,21 @@ export default {
   }
 
   .song-info {
-    margin-top: 3rem;
+    margin-top: 2rem;
     height: 10rem;
     overflow-y: hidden;
-    -webkit-mask-image: linear-gradient( to bottom,
+    mask-image: linear-gradient(
+      to bottom,
       rgba(255,255,255,0) 0,
       rgba(255,255,255,.6) 15%,
       rgba(255,255,255,1) 25%,
       rgba(255,255,255,1) 75%,
       rgba(255,255,255,.6) 85%,
-      rgba(255,255,255,0) 100%);
+      rgba(255,255,255,0) 100%
+    );
     >div {
       transition: all .3s;
+      margin-top: 25px;
       .lrc {
         line-height: 2rem;
         font-size: 1rem;

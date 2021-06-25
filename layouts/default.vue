@@ -33,7 +33,6 @@ export default {
       ];
       const isHideTool = hideToolRoute.includes(name);
       this.setIsHideToolAction(isHideTool);
-      console.log(this)
     }
   }
 }
