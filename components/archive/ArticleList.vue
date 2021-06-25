@@ -45,8 +45,7 @@ export default {
 #article-list {
   .article-list-item {
     color: #666;
-    background-color: #FFF;
-    opacity: 0.8;
+    background-color: rgba($color: #fff, $alpha: 0.8);
     padding: 6px;
     height: 100px;
     overflow: hidden;
@@ -67,11 +66,6 @@ export default {
         display: inline-block;
         text-decoration: none;
         color: inherit;
-        &:hover {
-          margin: 0px 0px 0px 10px;
-          color: #000;
-          text-decoration:underline;
-        }
       }
       .item-content {
         height: 3rem;
@@ -98,9 +92,14 @@ export default {
     }
   }
   .article-list-item:hover {
-    opacity: 0.9;
+    background-color: rgba($color: #fff, $alpha: 0.9);
     .item-image {
       background-size : 105%;
+    }
+    .item-title {
+      margin: 0px 0px 0px 10px;
+      color: #000;
+      text-decoration:underline;
     }
   }
 }

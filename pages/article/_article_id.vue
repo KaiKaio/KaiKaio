@@ -33,7 +33,7 @@ export default {
 
   computed: {
     ...mapState({
-      articleList: state => state.Article.ArticleList
+      articleList: state => state.Article.ArticleList,
     }),
   },
 
@@ -57,13 +57,11 @@ export default {
     if(this.articleList.length > 0) {
       this.title = this.articleList[this.index].title
       this.cover = this.articleList[this.index].cover
-      // this.parseMarkdown()
       this.parseContent = marked(this.articleList[this.index].content)
     } else {
       this.fetchArticleList().then(res => {
         this.title = this.articleList[this.index].title
         this.cover = this.articleList[this.index].cover
-        // this.parseMarkdown()
         this.parseContent = marked(this.articleList[this.index].content)
       })
     }
@@ -73,20 +71,16 @@ export default {
     ...mapActions({
       fetchArticleList: 'Article/fetchArticleList'
     }),
-
-    parseMarkdown() {
-      // this.parseContent = marked(this.articleList[this.index].content)
-    }
   },
 };
 </script>
 
 <style lang="scss">
 #article {
+  width: 82%;
   .article-detail {
     color: #555;
-    background-color: #FFF;
-    opacity: 0.9;
+    background-color: rgba($color: #fff, $alpha: 0.9);
     transition: all .3s;
     padding: 1rem 1rem;
     > img.article-cover {

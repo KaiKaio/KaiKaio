@@ -100,11 +100,10 @@ export default {
 #about {
   margin-top: 4.3125rem !important;
   color: #555;
-  background-color: #FFF;
-  opacity: 0.9;
   > .about-wrapper {
     padding: 4.3125rem 2rem 1.6rem;
     position: relative;
+    background-color: rgba($color: #fff, $alpha: 0.8);
     > .avatar {
       position: absolute;
       top: -4.3125rem;

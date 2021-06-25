@@ -32,7 +32,7 @@ export default {
   position: sticky;
   height: fit-content;
   top: 5.2rem;
-  width: 20%;
+  width: 15%;
   min-width: 200px;
   a {
     text-decoration: none;
