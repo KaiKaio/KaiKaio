@@ -23,7 +23,10 @@ footer {
   text-align: center;
   padding: 6px 0px;
   line-height: 20px;
-  font-size: 12px;
+  font-size: $font-size-small;
+  > p {
+    margin: 0px;
+  }
   a {
     text-decoration: none;
     color: inherit;

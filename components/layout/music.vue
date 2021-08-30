@@ -26,7 +26,7 @@
       </div>
 
       <div class="music-detail" @click="$router.push('/music_detail')">
-        <span v-if="sourceUrl.length > 0">{{ sourceUrl[musicIndex].title }} - {{ sourceUrl[musicIndex].singer }}</span>
+        <span class="song-name" v-if="sourceUrl.length > 0">{{ sourceUrl[musicIndex].title }} - {{ sourceUrl[musicIndex].singer }}</span>
         <span v-else>暂无歌曲</span>
       </div>
 
@@ -75,7 +75,6 @@ export default {
     this.$store.dispatch('Music/fetchMusicList')
 
     let playEvent = (e) => {
-      console.log('执行移动事件')
       // 轮询查看数据是否返回
       let checkData = setInterval(() => {
         if(this.sourceUrl.length > 0) {
@@ -201,9 +200,10 @@ export default {
 
 <style lang="scss" scoped>
 #music {
-  width: 14rem;
+  width: 20rem;
   margin-left: auto;
   position: relative;
+  font-size: $font-size-base;
   .music-player {
     color: #FFF;
     .icons-wrapper {
@@ -212,14 +212,14 @@ export default {
       justify-content: space-between;
       .player-icon {
         fill: #FFF;
-        width: 0.8rem;
-        height: 0.8rem;
+        width: 1.2rem;
+        height: 1.2rem;
         cursor: pointer;
         transition: all .3s;
         margin-right: 1rem;
         &.play-list {
-          width: 1.3rem;
-          height: 1.3rem;
+          width: 1.8rem;
+          height: 1.8rem;
         }
       }
       .player-icon:hover {
@@ -228,7 +228,7 @@ export default {
     }
     .audio-progress {
       position: relative;
-      height: 0.2rem;
+      height: 0.3rem;
       background: rgba(212, 249, 232, 1);
       border-radius: 1px;
       margin-top: 0.6rem;
@@ -244,9 +244,13 @@ export default {
       margin-top: 0.6rem;
       cursor: pointer;
       transition: all .3s;
-      font-size: 0.8rem;
       &:hover {
         color: rgba(5, 180, 147, 1);
+      }
+      > .song-name {
+        font-size: $font-size-small;
+        font-weight: 700;
+        @include text-overflow();
       }
     }
   }
@@ -266,6 +270,7 @@ export default {
     animation-duration: 1s;
     animation-fill-mode: none;
     width: 100%;
+
 
     @keyframes musicListAni {
       0% {
@@ -294,9 +299,11 @@ export default {
       display: flex;
       justify-content: space-between;
       cursor: pointer;
-      font-size: 0.8rem;
       transition: all .3s;
       border-radius: 0.3rem;
+      font-size: $font-size-small;
+      font-weight: 700;
+      @include text-overflow();
       &:hover {
         background: rgb(221, 216, 216);
       }
@@ -311,14 +318,15 @@ export default {
       }
     }
     > h4 {
-      padding-top: 0.6rem;
-      padding-bottom: 0.6rem;
-      margin-bottom: 0.3rem;
+      margin: 0px;
+      padding: 6px 0px;
       position: sticky;
       top: 0;
       background: #fff;
       z-index: 1;
       box-shadow: 0 2px 6px #fff;
+      font-size: $font-size-h4;
+      font-weight: bold;
     }
   }
 }

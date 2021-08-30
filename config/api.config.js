@@ -6,9 +6,9 @@
 import { NODE_ENV } from '../environment'
 
 const apiConfig = {
-  // proxyUrl: '/proxy/',
   development: {
     baseUrl: 'http://localhost:4000/api',
+    // baseUrl: 'https://api.kaikaio.com/api',
   },
   production: {
     baseUrl: 'https://api.kaikaio.com/api',

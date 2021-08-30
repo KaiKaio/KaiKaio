@@ -7,9 +7,9 @@
 // export const meta = {
 exports.meta = {
   title: 'KaiKaio',
-  keywords: 'KaiKai,React,Vue,前端开发,JavaScript',
+  keywords: 'KaiKai,React,Vue,前端开发,JavaScript,Nodejs',
   description: '一代人终将老去，但也总有人正年轻',
-  url: 'rcment.top',
+  url: 'kaikaio.com',
   author: 'KaiKai',
   email: '1035759181@qq.com',
 }

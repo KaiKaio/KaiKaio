@@ -2,7 +2,7 @@
   <div id="about">
     <div class="about-wrapper">
       <img class="avatar" src="https://kaikai-bloga.oss-cn-beijing.aliyuncs.com/about/KaiAvatar.jpeg" alt="avatar">
-      <ul>
+      <ul class="list-info">
         <li v-for="(item, index) in aboutList" :key="index">
           <svg class="icon about-icon" aria-hidden="true">
             <title>{{item.description}}</title>
@@ -98,26 +98,26 @@ export default {
 
 <style lang="scss">
 #about {
-  margin-top: 4.3125rem !important;
+  margin-top: 5.5rem !important;
   color: #555;
+  font-size: $font-size-base;
   > .about-wrapper {
-    padding: 4.3125rem 2rem 1.6rem;
+    padding: 4rem 1rem 1rem;
     position: relative;
     background-color: rgba($color: #fff, $alpha: 0.8);
     > .avatar {
       position: absolute;
-      top: -4.3125rem;
+      top: -5.5rem;
       left: 50%;
       transform: translateX(-50%);
-      width: 8rem;
-      height: 8rem;
+      width: 11rem;
+      height: 11rem;
       z-index: 1;
       max-width: 100%;
       border-radius: 100%;
       border: 0.3125rem solid hsla(0,0%,77.3%,0.5);
     }
-    > ul {
-      font-size: 0.875rem;
+    > ul.list-info {
       list-style: none;
       >li {
         padding: 0.5rem 0rem;
@@ -125,8 +125,8 @@ export default {
         display: flex;
         align-items: center;
         .about-icon {
-          width: 1.2rem;
-          height: 1.2rem;
+          width: $font-size-large;
+          height: $font-size-large;
           transition: all .3s;
           &.weibo {
             &:hover {
@@ -141,7 +141,11 @@ export default {
         }
         > .li-content {
           margin-left: 1rem;
+          display: flex;
           > a {
+            display: block;
+            width: $font-size-large;
+            height: $font-size-large;
             margin-right: 0.6rem;
             color: #555;
           }

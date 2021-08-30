@@ -1,8 +1,6 @@
 <template>
   <header id="header">
     <div class="header-container">
-
-
       <transition name="transitionRouter" mode="out-in">
         <div class="header-title" key="title" v-if="showTitle">{{ articleList[index].title }}</div>
         <div key="logo" class="logo" @click="toHome" v-else>
@@ -13,7 +11,6 @@
           <p class="header-slogan" v-text="$appConfig.meta.description"></p>
         </div>
       </transition>
-
       <Music />
     </div>
   </header>
@@ -81,39 +78,38 @@ header {
   position: fixed;
   top: 0rem;
   left: 0rem;
-  height: 5rem;
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
   color: #fff;
   width: 100%;
-  display: flex;
-  align-items: center;
   z-index: 10;
-  font-weight: 700;
   .header-container {
     width: 90%;
     margin: 0 auto;
     display: flex;
+    align-items: center;
+    padding: 10px 0px;
     .logo {
+      font-weight: 700;
       cursor: pointer;
       .icon.logo-icon {
-        width: 2rem;
-        height: 2rem;
+        width: 2.7rem;
+        height: 2.7rem;
         fill: #fff;
       }
       .logo-font {
-        font-size: 1.4rem;
+        font-size: $font-size-h2;
         margin-left: 0.2rem;
       }
     }
     .header-slogan {
-      font-size: 0.8rem;
-      margin: 0.4rem 0px 0px 0px;
+      margin: 0rem 0px 0px 0px;
     }
     > .header-title {
       display: flex;
       align-items: center;
-      font-size: 1.3rem;
+      font-size: $font-size-h2;
+      font-weight: 700;
     }
   }
 

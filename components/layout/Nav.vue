@@ -27,12 +27,11 @@ export default {
 
 <style lang="scss">
 #nav {
+  font-size: $font-size-h3;
+  font-weight: 700;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  height: fit-content;
-  top: 5.2rem;
-  width: 15%;
+  position: fixed;
   min-width: 200px;
   a {
     text-decoration: none;
@@ -43,8 +42,8 @@ export default {
       background: rgba($color: #333, $alpha: .5);
     }
     .icon {
-      width: 1.3rem;
-      height: 1.3rem;
+      width: $font-size-h3;
+      height: $font-size-h3;
       margin-right: .5rem;
     }
   }
