@@ -22,6 +22,7 @@ export default {
       this.$axios.get('/Background').then((res)=> {
         this.backgroundUrl = res.data.data[0].url
       }).catch(err => {
+        this.backgroundUrl = 'https://kaikai-bloga.oss-cn-beijing.aliyuncs.com/background/Moon.jpeg'
         console.log('获取背景失败', err)
       })
     }
