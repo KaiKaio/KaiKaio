@@ -15,7 +15,7 @@
               <title>Location</title>
               <use xlink:href="#icon-address" />
             </svg>
-            <span>{{ comment.ip_location }}</span>
+            <span>{{ comment.ip_location || '外太空~' }}</span>
           </span>
         </div>
         <div class="comment-content">
@@ -34,7 +34,7 @@
     <div key="edit" class="user">
       <div class="name">
         <input
-          v-model="user.name"
+          v-model="user.userName"
           required
           type="text"
           name="name"
@@ -75,7 +75,7 @@ import CommentUa from '@/components/CommentUa'
 import CommentPen from '@/components/CommentPen'
 
 export default {
-  name: "About",
+  name: "Mood",
   components: {
     CommentPen,
     CommentUa,
@@ -90,7 +90,7 @@ export default {
     return {
       commentList: [],
       user: {
-        name: '',
+        userName: '',
         email: '',
         site: '',
       }
@@ -111,10 +111,24 @@ export default {
     },
 
     submitComment(content) {
-      console.log(this.user, '=> user')
-      console.log(content, '=> content')
-      this.$axios.get('/Comment', {
+      const {
+        userName,
+        site,
+        email
+      } = this.user
+      
+      if (!userName) {
+        alert('输一下名字吧，认识一下~')
+        return
+      }
 
+      this.$axios.post('/Comment/Add', {
+        agent: navigator.userAgent,
+        content,
+        agent: navigator.userAgent,
+        userName,
+        site,
+        email
       }).then((res)=> {
         this.commentList = res.data.data;
       }).catch(err => {
