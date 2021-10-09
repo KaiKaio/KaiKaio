@@ -9,7 +9,7 @@ import apiConfig from './config/api.config'
 
 export default {
   mode: 'universal',
-  // modern: true,
+  modern: true,
   env: {
     baseUrl: apiConfig.baseUrl,
   },
@@ -34,14 +34,9 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
-      { src: '//at.alicdn.com/t/font_1477103_g7xad2okcyv.js' }
+      { src: '//at.alicdn.com/t/font_1477103_4wpie1qyj3u.js' }
     ],
   },
-
-  css: [
-    'normalize.css/normalize.css',
-    '@/assets/styles/app.scss',
-  ],
 
   icon: {
     iconSrc: '/static/icon.png',
@@ -56,10 +51,26 @@ export default {
   ],
 
   modules: [
+    '@nuxtjs/style-resources',
     ['@nuxtjs/axios', { baseURL: apiConfig.baseUrl, timeout: 8000 } ]
   ],
 
   build: {
-    publicPath: 'https://cdn.kaikaio.com/_nuxt/'
-  }
+    publicPath: 'https://cdn.kaikaio.com/_nuxt/',
+    babel:{
+      plugins:[
+        ["@babel/plugin-proposal-private-methods", { "loose": true }]
+      ]
+    }
+  },
+
+  css: [
+    '@/assets/styles/app.scss'
+  ],
+
+  styleResources: {
+    scss: [
+      './assets/styles/init.scss'
+    ]
+  },
 }

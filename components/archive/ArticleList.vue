@@ -5,11 +5,13 @@
         :style="{ backgroundImage: `url(${item.cover})`,}">
       </div>
       <div class="item-text-content">
-        <nuxt-link class="item-title" :to="`/article/${index}`" :title="item.title" v-text="item.title" />
+        <h5 class="item-title">
+          <nuxt-link :to="`/article/${index}`" :title="item.title" v-text="item.title" />
+        </h5>
         <div class="item-content">{{ item.description }}</div>
         <div class="item-create-time">
           <svg class="icon date" aria-hidden="true">
-            <use xlink:href="#icon-md-shijian" />
+            <use xlink:href="#icon-time" />
           </svg>
           {{ item.createtime }}
         </div>
@@ -23,11 +25,6 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'ArticleList',
-  head() {
-    return {
-      title: `文章 | KaiKaio`
-    }
-  },
 
   computed: {
     ...mapState({
@@ -56,22 +53,28 @@ export default {
     transition: all .3s;
     .item-text-content {
       width: calc(65% - 12px);
-      font-size: 12px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       .item-title {
         transition: all .3s;
-        font-size: 16px;
         display: inline-block;
         text-decoration: none;
         color: inherit;
+        margin-top: 3px;
+        margin-bottom: .618rem;
+        font-weight: 700;
+        color: var(--link-color-hover);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .item-content {
         height: 3rem;
         text-overflow: ellipsis;
         display: -webkit-box;
         overflow: hidden;
+        font-size: $font-size-h6;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
       }
@@ -97,7 +100,7 @@ export default {
       background-size : 105%;
     }
     .item-title {
-      margin: 0px 0px 0px 10px;
+      margin-left: 10px;
       color: #000;
       text-decoration:underline;
     }

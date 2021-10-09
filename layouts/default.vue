@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-cloak>
+  <div id="app" :class="'default'" v-cloak>
     <MainView />
   </div>
 </template>

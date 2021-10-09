@@ -39,20 +39,19 @@ export default {
 
   mounted() {
     marked.setOptions({
-        renderer: new marked.Renderer(),
-        highlight: function(code) {
-          return highlightjs.highlightAuto(code).value;
-        },
-        pedantic: false,
-        gfm: true,
-        tables: true,
-        breaks: false,
-        sanitize: false,
-        smartLists: true,
-        smartypants: false,
-        xhtml: false
-      }
-    );
+      renderer: new marked.Renderer(),
+      highlight: function(code) {
+        return highlightjs.highlightAuto(code).value;
+      },
+      pedantic: false,
+      gfm: true,
+      tables: true,
+      breaks: false,
+      sanitize: false,
+      smartLists: true,
+      smartypants: false,
+      xhtml: false
+    });
 
     if(this.articleList.length > 0) {
       this.title = this.articleList[this.index].title
@@ -95,11 +94,9 @@ export default {
     }
 
     > h1.article-title {
-      font-size: 1.8rem;
       text-align: center;
     }
     .article-content {
-      font-size: 0.845rem;
       font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
       line-height: 2;
       h1,h2,h3,h4,h5,h6 {
@@ -136,7 +133,6 @@ export default {
         > code {
           padding: 0;
           margin: 0;
-          font-size: 100%;
           background: transparent;
           color: inherit;
         }

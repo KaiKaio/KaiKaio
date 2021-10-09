@@ -119,7 +119,7 @@ export default {
       this.lrc = []
 
       let lyric = Base64.decode(this.sourceUrl[this.musicIndex].lrc)
-      lyric.split('\n').map(string => {
+      lyric.split('\n').forEach(string => {
         let regex = /\[([\d:.]+)\](.+)/
         let matches = string.match(regex)
         if(matches){
@@ -134,7 +134,7 @@ export default {
             'seconds': parts[1],
             'dataTime': newTime
           }
-          this.lrc.push(obj)
+          newTime.toString() !== NaN.toString() && this.lrc.push(obj)
         } else {
           let time = string.replace(/\[|]/g,'') // 去除中括号
           let parts = time.split(':')
@@ -147,7 +147,7 @@ export default {
             'seconds': parts[1],
             'dataTime': newTime
           }
-          this.lrc.push(obj)
+          newTime.toString() !== NaN.toString() && this.lrc.push(obj)
         }
       })
     },
@@ -172,7 +172,7 @@ export default {
           break;
         }
 
-        this.transY = -(i * 2);
+        this.transY = -(i * 2.7) + 2.7;
         this.currentContent = this.lrc[i];
         break;
 
@@ -202,14 +202,14 @@ export default {
   .albumart-wrapper {
     position: relative;
     width: 100%;
-    height: 26rem;
+    height: 34rem;
     margin: 0 auto;
     .albumart {
       position: absolute;
-      width: 26rem;
-      height: 26rem;
+      width: 34rem;
+      height: 34rem;
       left: 50%;
-      margin-left: calc(-26rem / 2);
+      margin-left: calc(-34rem / 2);
       border-radius: 50%;
       opacity: .8;
       transition: all .3s;
@@ -275,7 +275,7 @@ export default {
 
   .song-info {
     margin-top: 2rem;
-    height: 10rem;
+    height: 14rem;
     overflow-y: hidden;
     mask-image: linear-gradient(
       to bottom,
@@ -290,12 +290,12 @@ export default {
       transition: all .3s;
       margin-top: 25px;
       .lrc {
-        line-height: 2rem;
-        font-size: 1rem;
+        font-size: $font-size-h3;
+        margin-bottom: 0px;
+        line-height: 2.7rem;
         transition: all .3s;
         text-align: center;
       &.active {
-          font-size: 1.2rem;
           color: rgba(5, 180, 147, 1);
         }
       }

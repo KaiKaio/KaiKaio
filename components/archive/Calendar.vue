@@ -141,10 +141,10 @@
 <style lang="scss" scoped>
 .calendar-box {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 0.75rem;
   background-color: rgba(255, 255, 255, 0.6);
   padding: .8rem .3em;
   border-radius: 3px;
+  font-size: $font-size-small;
   > .months {
     margin-bottom: 0.8rem;
     > .month-list {
@@ -160,7 +160,6 @@
         &.arrow {
           width: 1.6rem;
           height: 1.6rem;
-          font-size: 0.8rem;
           display: flex;
           align-items: center;
           justify-content: center;

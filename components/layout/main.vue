@@ -6,8 +6,11 @@
       <Background />
     </client-only>
 
-    <main ref="main" :style="{ paddingBottom: `${footerHeight}px`}">
-      <Nav />
+    <main ref="main" :style="{ paddingBottom: `${footerHeight + 20}px`}">
+      <div class="nav-wrapper">
+        <Nav />
+      </div>
+
 
       <transition name="transitionRouter">
         <nuxt ref="middle" keep-alive />
@@ -58,15 +61,19 @@ export default {
 main {
   width: 90%;
   margin: 0rem auto;
-  padding: 6rem 0rem 0rem;
+  padding: 7rem 0rem 0rem;
   display: flex;
   justify-content: space-between;
   > #main-container,
   > #music_detail,
   > #about,
+  > #mood,
   > article {
     width: 55%;
     min-width: 400px;
+  }
+  > .nav-wrapper {
+    width: 200px;
   }
 }
 
