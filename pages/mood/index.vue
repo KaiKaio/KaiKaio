@@ -62,7 +62,7 @@
         >
       </div>
     </div>
-    <CommentPen @submit="submitComment"/>
+    <CommentPen @submit="submitComment" ref="commentPen" />
 
   </div>
 </template>
@@ -116,7 +116,7 @@ export default {
         site,
         email
       } = this.user
-      
+
       if (!userName) {
         alert('输一下名字吧，认识一下~')
         return
@@ -130,7 +130,17 @@ export default {
         site,
         email
       }).then((res)=> {
-        this.commentList = res.data.data;
+        const { data } = res
+        if (data.code !== 0) {
+          return
+        }
+        this.commentList.push(data.result)
+        this.user = {
+          userName: '',
+          email: '',
+          site: '',
+        }
+        this.$refs.commentPen.clearContent()
       }).catch(err => {
         reject(err);
       })

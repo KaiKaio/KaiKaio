@@ -225,6 +225,11 @@
       handleSubmit(event) {
         event.preventDefault()
         this.$emit('submit', this.content)
+      },
+
+      clearContent() {
+        this.content = ''
+        this.$refs.input.innerText = ''
       }
     },
     watch: {
