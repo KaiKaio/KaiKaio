@@ -67,12 +67,3 @@
     }
   }
 </script>
-
-<style lang="scss" scope>
-  .agent {
-    .icon {
-      width: $font-size-large;
-      height: $font-size-large;
-    }
-  }
-</style>

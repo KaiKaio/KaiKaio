@@ -7,27 +7,31 @@
         :key="comment._id"
         class="comment-item"
       >
-        <div class="comment-header">
-          <span class="user-name">{{comment.userName}}</span>
-          <CommentUa :ua="comment.agent" />
-          <span class="location">
+        <div class="comment-main">
+          <div class="comment-header">
+            <span class="user-name">{{comment.userName}}</span>
+            <span class="location">
+              <svg class="icon" aria-hidden="true">
+                <title>Location</title>
+                <use xlink:href="#icon-address" />
+              </svg>
+              <span>{{ comment.ip_location || '外太空~' }}</span>
+            </span>
+          </div>
+          <div class="comment-content">
+            <div v-html="marked(comment.content)"></div>
+          </div>
+          <div class="comment-footer">
             <svg class="icon" aria-hidden="true">
               <title>Location</title>
-              <use xlink:href="#icon-address" />
+              <use xlink:href="#icon-time" />
             </svg>
-            <span>{{ comment.ip_location || '外太空~' }}</span>
-          </span>
+            <span class="create_at">{{ comment.createDate }}</span>
+          </div>
         </div>
-        <div class="comment-content">
-          <div v-html="marked(comment.content)"></div>
-        </div>
-        <div class="comment-footer">
-          <svg class="icon" aria-hidden="true">
-            <title>Location</title>
-            <use xlink:href="#icon-time" />
-          </svg>
-          <span class="create_at">{{ comment.createDate }}</span>
-        </div>
+
+
+        <CommentUa :ua="comment.agent" />
       </li>
     </ul>
 
@@ -162,30 +166,37 @@ export default {
     list-style-type: none;
     margin-bottom: 1rem;
     .comment-item {
-      padding-left: 2rem;
-      display: block;
+      display: flex;
       width: 100%;
       height: 100%;
       margin-bottom: $gap;
-      padding: $sm-gap $sm-gap $sm-gap ($lg-gap * 3);
+      padding: $sm-gap $sm-gap $sm-gap ($lg-gap * 1);
       background-color: $module-hover-bg;
       @include background-transition();
+      .comment-main {
+        flex: 1;
+      }
+      .agent {
+        width: 130px;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        margin-left: 20px;
+        .browser {
+          margin-top: 3px;
+        }
+      }
       .comment-header {
         display: flex;
         align-items: center;
-        justify-content: flex-end;
         width: 100%;
         .user-name {
-          margin-right: auto;
           font-weight: bold;
-          font-size: $font-size-large;
+          font-size: 16px;
         }
         .location {
+          font-size: 14px;
           margin-left: 20px;
-          .icon {
-            width: $font-size-large;
-            height: $font-size-large;
-          }
         }
       }
 
