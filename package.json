@@ -20,7 +20,7 @@
     "highlight.js": "^9.18.1",
     "js-base64": "^2.5.1",
     "koa": "^2.6.2",
-    "marked": "^0.8.2",
+    "marked": "^4.0.10",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",
     "ua-parser-js": "^0.7.28"
