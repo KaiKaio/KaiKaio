@@ -12,7 +12,7 @@
       </div>
 
       <transition name="transitionRouter">
-        <div>
+        <div class="main-center">
           <NuxtPage ref="middle" keep-alive />
         </div>
       </transition>
@@ -56,6 +56,10 @@ main {
   }
   > .nav-wrapper {
     width: 200px;
+  }
+  > .main-center {
+    flex: 1;
+    margin: 0px 20px;
   }
 }
 
