@@ -1,5 +1,5 @@
 import { marked } from 'marked'
-import { META } from '@/config/app.config'
+import { META } from '~/config/app.config'
 import highlight from './highlight'
 
 /*

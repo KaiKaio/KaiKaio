@@ -67,7 +67,7 @@
 </template>
 
 <script>
-  import { markdownToHTML } from '@/composables/marked'
+  import { markdownToHTML } from '~/composables/marked'
 
   export default {
     name: 'CommentPen',
