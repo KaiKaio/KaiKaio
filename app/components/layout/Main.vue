@@ -12,7 +12,9 @@
       </div>
 
       <transition name="transitionRouter">
-        <NuxtPage ref="middle" keep-alive />
+        <div>
+          <NuxtPage ref="middle" keep-alive />
+        </div>
       </transition>
 
       <Tool />
