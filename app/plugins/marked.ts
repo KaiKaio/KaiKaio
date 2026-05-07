@@ -78,9 +78,19 @@ marked.setOptions({
   renderer
 })
 
-export const markdownToHTML = (markdown: string): string => {
+const markdownToHTML = (markdown: string): string => {
   if (!markdown || typeof markdown !== 'string') {
     return ''
   }
   return marked(markdown) as string
 }
+
+export default defineNuxtPlugin(() => {
+  return {
+    provide: {
+      markdownToHTML
+    }
+  }
+})
+
+export { markdownToHTML }

@@ -47,9 +47,27 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "~/assets/styles/init.scss" as *;'
+          additionalData: '@use "~/assets/styles/init.scss" as *;',
+          silenceDeprecations: [
+            'import',
+            'legacy-js-api',
+            'global-builtin',
+            'if-function',
+            'slash-div',
+            'color-functions'
+          ]
         }
       }
+    },
+    optimizeDeps: {
+      include: [
+        'js-base64',
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'marked',
+        'highlight.js',
+        'ua-parser-js',
+      ]
     }
   }
 })
