@@ -23,11 +23,11 @@
     "marked": "^0.8.2",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",
+    "sass": "^1.99.0",
     "ua-parser-js": "^0.7.28"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.17",
-    "node-sass": "^4.14.1",
     "nodemon": "^1.18.9",
     "sass-loader": "^8.0.0"
   }

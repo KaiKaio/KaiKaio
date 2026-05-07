@@ -1,13 +1,14 @@
 /**
- * @file Api config / ES module
+ * @file Api config / CommonJS module
  * @lastModifiedTime 2019-10-29 15:08:37
  * @author KaiKaio <https://github.com/KaiKaio>
 */
-import { NODE_ENV } from '../environment'
+const { NODE_ENV } = require('../environment')
 
 const apiConfig = {
   development: {
-    baseUrl: 'http://localhost:4000/api',
+    baseUrl: 'http://10.242.46.156:4000/api',
+    // baseUrl: 'http://localhost:4000/api',
     // baseUrl: 'https://api.kaikaio.com/api',
   },
   production: {
@@ -15,4 +16,4 @@ const apiConfig = {
   }
 }
 
-export default apiConfig[NODE_ENV]
+module.exports = apiConfig[NODE_ENV]

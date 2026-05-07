@@ -1,13 +1,13 @@
 /**
- * @file NuxtConfig / Commonjs moduile
+ * @file NuxtConfig / CommonJS module
  * @lastModifiedTime 2019-10-26 00:12:57
  * @author KaiKaio <https://github.com/KaiKaio>
 */
 
-import appConfig from './config/app.config'
-import apiConfig from './config/api.config'
+const appConfig = require('./config/app.config')
+const apiConfig = require('./config/api.config')
 
-export default {
+module.exports = {
   mode: 'universal',
   modern: true,
   env: {
@@ -56,11 +56,20 @@ export default {
   ],
 
   build: {
-    publicPath: 'https://cdn.kaikaio.com/_nuxt/',
+    publicPath: process.env.NODE_ENV === 'production' 
+      ? 'https://cdn.kaikaio.com/_nuxt/' 
+      : '/_nuxt/',
     babel:{
       plugins:[
         ["@babel/plugin-proposal-private-methods", { "loose": true }]
       ]
+    },
+    loaders: {
+      scss: {
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api', 'import', 'slash-div', 'global-builtin', 'color-functions', 'if-function']
+        }
+      }
     }
   },
 
