@@ -12,10 +12,9 @@ const backgroundUrl = ref('https://kaikai-bloga.oss-cn-beijing.aliyuncs.com/back
 
 onMounted(async () => {
   try {
-    console.log(config, '=> config')
-    const { data } = await useFetch(`${config.public.baseUrl}/Background`)
-    if (data.value?.data?.[0]?.url) {
-      backgroundUrl.value = data.value.data[0].url
+    const data = await $fetch(`${config.public.baseUrl}/Background`)
+    if (data?.data?.[0]?.url) {
+      backgroundUrl.value = data.data[0].url
     }
   } catch (err) {
     console.error('获取背景失败', err)

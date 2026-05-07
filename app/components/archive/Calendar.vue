@@ -95,8 +95,6 @@
             const d = new Date(str)
             d.setDate(d.getDate() - i)
 
-            console.log("y:" + d.getDate())
-
             this.days.push(d)
           }
 

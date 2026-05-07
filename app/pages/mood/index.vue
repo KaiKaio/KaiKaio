@@ -70,7 +70,7 @@
 </template>
 
 <script setup lang="ts">
-import { markdownToHTML } from '~/plugins/marked'
+import { markdownToHTML } from '~/composables/marked'
 
 const config = useRuntimeConfig()
 const commentPen = ref()
@@ -85,8 +85,8 @@ const marked = (content: string) => markdownToHTML(content)
 
 onMounted(async () => {
   try {
-    const { data } = await useFetch(`${config.public.baseUrl}/Comment`)
-    commentList.value = data.value?.data || []
+    const data = await $fetch(`${config.public.baseUrl}/Comment`)
+    commentList.value = data?.data || []
   } catch (error) {
     console.error('获取评论列表错误:', error)
   }
@@ -99,7 +99,7 @@ const submitComment = async (content: string) => {
   }
 
   try {
-    const { data } = await useFetch(`${config.public.baseUrl}/Comment/Add`, {
+    const data = await $fetch(`${config.public.baseUrl}/Comment/Add`, {
       method: 'POST',
       body: {
         agent: navigator.userAgent,
@@ -110,8 +110,8 @@ const submitComment = async (content: string) => {
       }
     })
     
-    if (data.value?.code === 0) {
-      commentList.value.push(data.value.result)
+    if (data?.code === 0) {
+      commentList.value.push(data.result)
       user.value = {
         userName: '',
         email: '',

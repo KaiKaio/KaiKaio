@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import { markdownToHTML } from '~/plugins/marked'
-import 'highlight.js/styles/atelier-plateau-light.css'
+import { markdownToHTML } from '~/composables/marked'
+import 'highlight.js/styles/atom-one-light.css'
 
 const route = useRoute()
 const { articleList, fetchArticleList } = useArticle()

@@ -7,10 +7,10 @@ export const useMusic = () => {
   const fetchMusicList = async () => {
     const config = useRuntimeConfig()
     try {
-      const { data } = await useFetch<{
+      const data = await $fetch<{
         data: any[]
       }>(`${config.public.baseUrl}/Music`)
-      musicList.value = data.value?.data || []
+      musicList.value = data?.data || []
       return musicList.value
     } catch (error) {
       console.error('获取音乐列表错误:', error)
