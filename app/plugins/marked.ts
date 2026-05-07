@@ -75,7 +75,6 @@ marked.setOptions({
   gfm: true,
   breaks: false,
   pedantic: false,
-  smartLists: true,
   renderer
 })
 

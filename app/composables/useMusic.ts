@@ -7,7 +7,9 @@ export const useMusic = () => {
   const fetchMusicList = async () => {
     const config = useRuntimeConfig()
     try {
-      const { data } = await useFetch(`${config.public.baseUrl}/Music`)
+      const { data } = await useFetch<{
+        data: any[]
+      }>(`${config.public.baseUrl}/Music`)
       musicList.value = data.value?.data || []
       return musicList.value
     } catch (error) {

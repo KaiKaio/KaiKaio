@@ -4,7 +4,9 @@ export const useArticle = () => {
   const fetchArticleList = async () => {
     const config = useRuntimeConfig()
     try {
-      const { data } = await useFetch(`${config.public.baseUrl}/Article`)
+      const { data } = await useFetch<{
+        data: any[]
+      }>(`${config.public.baseUrl}/Article`)
       articleList.value = data.value?.data || []
       return articleList.value
     } catch (error) {
