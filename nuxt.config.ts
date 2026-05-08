@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   },
 
   app: {
+    pageTransition: { name: 'transitionRouter', mode: 'out-in' },
     head: {
       title: 'KaiKaio',
       titleTemplate: '%s | KaiKaio',

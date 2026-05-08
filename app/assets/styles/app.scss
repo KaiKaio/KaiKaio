@@ -18,3 +18,15 @@
 
 // common style
 @import "common.scss";
+
+// page transition
+.transitionRouter-enter-active,
+.transitionRouter-leave-active {
+  transition: all 0.8s ease;
+}
+
+.transitionRouter-enter-from,
+.transitionRouter-leave-to {
+  opacity: 0;
+  transform: translate3d(0, -10%, 0);
+}

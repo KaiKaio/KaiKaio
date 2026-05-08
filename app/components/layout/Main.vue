@@ -11,11 +11,9 @@
         <Nav />
       </div>
 
-      <transition name="transitionRouter">
-        <div class="main-center">
-          <NuxtPage ref="middle" keep-alive />
-        </div>
-      </transition>
+      <div class="main-center">
+        <NuxtPage ref="middle" keep-alive />
+      </div>
 
       <Tool />
     </main>

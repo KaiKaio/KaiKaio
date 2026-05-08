@@ -28,7 +28,7 @@ const { isHideTool } = useGlobal()
   right: 0px;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
   position: absolute;
