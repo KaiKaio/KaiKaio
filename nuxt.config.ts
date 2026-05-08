@@ -30,7 +30,7 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ],
       script: [
-        { src: '//at.alicdn.com/t/font_1477103_4wpie1qyj3u.js' }
+        { src: '//at.alicdn.com/t/c/font_1477103_tu6tm19otp.js' }
       ]
     }
   },

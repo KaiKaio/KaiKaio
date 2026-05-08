@@ -2,7 +2,6 @@
   <footer id="footer">
     <p>Powered by: Kaikaio_System</p>
     <p>Copyright © 2021 Kaikaio.com</p>
-    <a href="https://beian.miit.gov.cn" target="_blank">琼ICP备20000436号-1</a>
   </footer>
 </template>
 

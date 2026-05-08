@@ -1,7 +1,7 @@
 <template>
   <div id="about">
     <div class="about-wrapper">
-      <img class="avatar" src="https://kaikai-bloga.oss-cn-beijing.aliyuncs.com/about/KaiAvatar.jpeg" alt="avatar">
+      <img class="avatar" src="http://10.242.46.156:7009/public/upload/20260507/1778085014180.png" alt="avatar">
       <ul class="list-info">
         <li v-for="(item, index) in aboutList" :key="index">
           <svg class="icon about-icon" aria-hidden="true">
@@ -12,7 +12,7 @@
           <div v-if="item.content" class="li-content">{{item.content}}</div>
           <div v-if="item.linkList" class="li-content">
             <a v-for="itemChild in item.linkList" :key="itemChild.itemChild" target="_blank" :href="itemChild.href">
-              <svg class="icon about-icon" aria-hidden="true">
+              <svg :class="['icon', 'about-icon', itemChild.description]" aria-hidden="true">
                 <title>{{itemChild.description}}</title>
                 <use :xlink:href="`#${itemChild.icon}`" />
               </svg>
@@ -29,12 +29,7 @@ const aboutList = [
   {
     description: '名字',
     icon: 'icon-UserSettings',
-    content: '开开哦',
-  },
-  {
-    description: '技术栈',
-    icon: 'icon-code',
-    content: 'Vue \\ React \\ Nodejs \\ JavaScript',
+    content: 'Kaikaio',
   },
   {
     description: '社交',
@@ -49,15 +44,15 @@ const aboutList = [
       {
         id: 2,
         href: 'https://weibo.com/chenkaiwei9',
-        description: '微博',
-        icon: 'icon-weibo',
+        description: 'Weibo',
+        icon: 'icon-square-Weibo',
       },
     ],
   },
   {
     description: '描述',
     icon: 'icon-miaoshu',
-    content: '一枚前端开发~',
+    content: 'Barbarous Growth ~ 🌱 And I Wish You Luck! ✨',
   },
 ]
 
@@ -89,34 +84,35 @@ useHead({
     }
     > ul.list-info {
       list-style: none;
+      padding-left: 12px;
       >li {
         padding: 0.5rem 0rem;
         margin-bottom: 1.2rem;
         display: flex;
-        align-items: center;
+        align-items: baseline;
         .about-icon {
           width: $font-size-large;
           height: $font-size-large;
           transition: all .3s;
-          &.weibo {
+          &.Weibo {
             &:hover {
               fill: #e3091c;
             }
           }
-          &.github {
+          &.Github {
             &:hover {
               fill: #000
             }
           }
         }
         > .li-content {
-          margin-left: 1rem;
+          margin-left: 1.5rem;
           display: flex;
+          column-gap: 1rem;
           > a {
             display: block;
             width: $font-size-large;
             height: $font-size-large;
-            margin-right: 0.6rem;
             color: #555;
           }
         }
