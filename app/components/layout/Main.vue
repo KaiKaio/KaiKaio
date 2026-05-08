@@ -6,7 +6,7 @@
       <Background />
     </ClientOnly>
 
-    <main ref="main" :style="{ paddingBottom: `${footerHeight + 20}px`}">
+    <main ref="main" :style="{ paddingBottom: `${footerHeight}px`}">
       <div class="nav-wrapper">
         <Nav />
       </div>
@@ -41,8 +41,8 @@ onMounted(() => {
 
 <style lang="scss">
 main {
-  width: 90%;
-  margin: 0rem auto;
+  min-width: 700px;
+  margin: 0rem 2rem;
   padding: 7rem 0rem 0rem;
   display: flex;
   justify-content: space-between;
@@ -56,6 +56,7 @@ main {
   }
   > .nav-wrapper {
     width: 200px;
+    flex-shrink: 0;
   }
   > .main-center {
     flex: 1;

@@ -275,7 +275,6 @@ nav ul {
   list-style: if(variable-exists(nav-list-style), $nav-list-style, none);
 }
 
-main,
 header,
 footer,
 article,

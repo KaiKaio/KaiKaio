@@ -15,6 +15,7 @@ const { isHideTool } = useGlobal()
   display: flex;
   flex-direction: column;
   width: 252px;
+  flex-shrink: 0;
 }
 
 .fade-enter-active,

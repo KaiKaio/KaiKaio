@@ -39,7 +39,6 @@ useHead({
 
 <style lang="scss">
 #article {
-  width: 82%;
   .article-detail {
     color: #555;
     background-color: rgba($color: #fff, $alpha: 0.9);

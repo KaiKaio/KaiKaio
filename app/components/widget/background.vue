@@ -29,7 +29,7 @@ onMounted(async () => {
   height: 100%;
   top: 0px;
   left: 0px;
-  filter: brightness(0.9);
+  filter: brightness(0.5);
   z-index: -1;
   > .background-image {
     position: absolute;
