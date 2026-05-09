@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  kaikaio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kaikaio-app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "3004:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - NUXT_API_BASE_URL=${NUXT_API_BASE_URL:-http://host.docker.internal:4000/api}
+      - NUXT_PUBLIC_API_BASE_URL=${NUXT_PUBLIC_API_BASE_URL:-http://host.docker.internal:4000/api}

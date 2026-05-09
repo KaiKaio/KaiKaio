@@ -2,8 +2,12 @@
 
 ```json
 {
+  "Language Context": [
+    "TS",
+    "TS_ESM"
+  ],
   "Architecture Stack": [
-    "NodeJS"
+    "Vue"
   ]
 }
 ```

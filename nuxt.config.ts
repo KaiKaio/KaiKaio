@@ -7,11 +7,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    // apiBaseUrl: 'https://api.kaikaio.com/api',
-    apiBaseUrl: 'http://10.242.46.156:4000/api',
+    apiBaseUrl: process.env.NUXT_API_BASE_URL,
     public: {
-      // baseUrl: 'https://api.kaikaio.com/api'
-      baseUrl: 'http://10.242.46.156:4000/api',
+      baseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
     }
   },
 
