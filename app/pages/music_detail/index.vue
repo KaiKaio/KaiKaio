@@ -85,23 +85,23 @@ const parseLrc = () => {
     const matches = string.match(regex)
     if (matches) {
       const time = matches[1]
-      const parts = time.split(':')
-      const minutes = parts[0]
-      const seconds = parts[1]
-      const newTime = parseInt(minutes, 10) * 60 + parseFloat(seconds, 10)
+      const parts = time?.split(':')
+      const minutes = parts?.[0] || '00'
+      const seconds = parts?.[1] || '00'
+      const newTime = parseInt(minutes, 10) * 60 + parseFloat(seconds)
       const obj = {
         'textContent': matches[2],
-        'minutes': parts[0],
-        'seconds': parts[1],
+        'minutes': minutes,
+        'seconds': seconds,
         'dataTime': newTime
       }
       !isNaN(newTime) && lrc.value.push(obj)
     } else {
       const time = string.replace(/\[|]/g, '')
       const parts = time.split(':')
-      const minutes = parts[0]
-      const seconds = parts[1]
-      const newTime = parseInt(minutes, 10) * 60 + parseFloat(seconds, 10)
+      const minutes = parts?.[0] || '00'
+      const seconds = parts?.[1] || '00'
+      const newTime = parseInt(minutes) * 60 + parseFloat(seconds)
       const obj = {
         'textContent': '',
         'minutes': parts[0],
@@ -131,7 +131,7 @@ const computedLrc = (newTime: number) => {
       break
     }
 
-    transY.value = -(i * 2.7) + 2.7
+    transY.value = -(i * 2.7) + 7
     currentContent.value = lrc.value[i]
     break
   }
