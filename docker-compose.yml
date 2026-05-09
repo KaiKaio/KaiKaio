@@ -2,10 +2,11 @@ version: '3.8'
 
 services:
   kaikaio:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: kaikaio-app
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: kaikaioano/kaikaio:master
+    container_name: kaikaio-nuxt
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
