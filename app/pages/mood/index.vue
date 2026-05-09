@@ -72,7 +72,6 @@
 <script setup lang="ts">
 import { markdownToHTML } from '~/composables/marked'
 
-const config = useRuntimeConfig()
 const commentPen = ref()
 const commentList = ref<any[]>([])
 const user = ref({
@@ -85,7 +84,7 @@ const marked = (content: string) => markdownToHTML(content)
 
 onMounted(async () => {
   try {
-    const data = await $fetch(`${config.public.baseUrl}/Comment`)
+    const data = await $fetch('/api/Comment')
     commentList.value = data?.data || []
   } catch (error) {
     console.error('获取评论列表错误:', error)
@@ -99,7 +98,7 @@ const submitComment = async (content: string) => {
   }
 
   try {
-    const data = await $fetch(`${config.public.baseUrl}/Comment/Add`, {
+    const data = await $fetch('/api/Comment/Add', {
       method: 'POST',
       body: {
         agent: navigator.userAgent,

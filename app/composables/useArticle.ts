@@ -2,11 +2,10 @@ export const useArticle = () => {
   const articleList = useState<any[]>('articleList', () => [])
   
   const fetchArticleList = async () => {
-    const config = useRuntimeConfig()
     try {
       const data = await $fetch<{
         data: any[]
-      }>(`${config.public.baseUrl}/Article`)
+      }>('/api/Article')
       articleList.value = data?.data || []
       return articleList.value
     } catch (error) {

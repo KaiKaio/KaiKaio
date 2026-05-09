@@ -5,11 +5,10 @@ export const useMusic = () => {
   const currentTime = useState<number>('currentTime', () => 0)
   
   const fetchMusicList = async () => {
-    const config = useRuntimeConfig()
     try {
       const data = await $fetch<{
         data: any[]
-      }>(`${config.public.baseUrl}/Music`)
+      }>('/api/Music')
       musicList.value = data?.data || []
       return musicList.value
     } catch (error) {

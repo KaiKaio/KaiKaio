@@ -7,12 +7,11 @@
 </template>
 
 <script setup lang="ts">
-const config = useRuntimeConfig()
 const backgroundUrl = ref('https://kaikai-bloga.oss-cn-beijing.aliyuncs.com/background/Moon.jpeg')
 
 onMounted(async () => {
   try {
-    const data = await $fetch(`${config.public.baseUrl}/Background`)
+    const data = await $fetch('/api/Background')
     if (data?.data?.[0]?.url) {
       backgroundUrl.value = data.data[0].url
     }
