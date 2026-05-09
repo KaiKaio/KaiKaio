@@ -11,7 +11,7 @@
 
           <div v-if="item.content" class="li-content">{{item.content}}</div>
           <div v-if="item.linkList" class="li-content">
-            <a v-for="itemChild in item.linkList" :key="itemChild.itemChild" target="_blank" :href="itemChild.href">
+            <a v-for="itemChild in item.linkList" :key="itemChild.id" target="_blank" :href="itemChild.href">
               <svg :class="['icon', 'about-icon', itemChild.description]" aria-hidden="true">
                 <title>{{itemChild.description}}</title>
                 <use :xlink:href="`#${itemChild.icon}`" />
