@@ -39,7 +39,8 @@ onMounted(() => {
 
 <style lang="scss">
 main {
-  min-width: 700px;
+  min-width: 720px;
+  max-width: 1080px;
   margin: 0rem 2rem;
   padding: 7rem 0rem 0rem;
   display: flex;
