@@ -45,7 +45,7 @@
           :class="{'active': currentContent.dataTime === item.dataTime}"
           v-for="item in lrc"
           :key="item.dataTime">
-          {{ item.textContent === '' ? '&nbsp;' : item.textContent }}
+          {{ item.textContent?.trim() === '' ? '&nbsp;' : item.textContent }}
         </p>
       </div>
     </div>
@@ -81,6 +81,9 @@ const parseLrc = () => {
   
   const lyric = Base64.decode(sourceUrl.value[musicIndex.value].lrc)
   lyric.split('\n').forEach(string => {
+    // 这个正则用于解析类似 [时间戳]内容 的字符串
+    // matches[1] = "12:34:56"  (时间戳)
+    // matches[2] = " Hello World"  (内容)
     const regex = /\[([\d:.]+)\](.+)/
     const matches = string.match(regex)
     if (matches) {
@@ -113,25 +116,52 @@ const parseLrc = () => {
   })
 }
 
+/**
+ * 根据当前播放时间计算并更新当前应该显示的歌词行
+ * 
+ * 该方法通过遍历歌词数组，找到当前播放时间对应的歌词行，并更新显示状态：
+ * 1. 遍历所有歌词行，找到时间区间包含当前播放时间的歌词行
+ * 2. 更新歌词滚动的垂直偏移量，使当前歌词行居中显示
+ * 3. 更新当前歌词内容，用于高亮显示
+ * 
+ * @param {number} newTime - 当前音频播放时间（秒）
+ * @returns {void} 无返回值，通过副作用更新 currentContent 和 transY
+ * 
+ * @example
+ * // 当播放时间为 65.5 秒时
+ * computedLrc(65.5)
+ * // 会找到时间区间包含 65.5 秒的歌词行并更新显示
+ */
 const computedLrc = (newTime: number) => {
+  console.log(lrc.value, '=> lrc.value')
   for (let i = 0; i < lrc.value.length; i++) {
+    // 如果是最后一行歌词，直接设置为当前内容
     if (i === lrc.value.length - 1) {
       currentContent.value = lrc.value[i]
       break
     }
 
+    // 获取当前行和下一行的时间戳
     const currentTime = lrc.value[i].dataTime
     const nextTime = lrc.value[i + 1].dataTime
 
+    // 检查当前播放时间是否在 [currentTime, nextTime) 区间内
+    // 如果不在该区间，继续检查下一行
     if (!(newTime >= currentTime && newTime < nextTime)) {
       continue
     }
 
+    // 如果当前显示的歌词行已经是这一行，则不需要重复更新
     if (currentContent.value.dataTime === lrc.value[i].dataTime) {
       break
     }
 
+    // 更新歌词滚动的垂直偏移量
+    // 计算公式：向上偏移 (i * 2.7) 的距离，再加上 7 的基础偏移
+    // 2.7 是每行歌词的高度（rem），7 是初始偏移量使第一行居中
     transY.value = -(i * 2.7) + 7
+    
+    // 更新当前显示的歌词内容
     currentContent.value = lrc.value[i]
     break
   }
@@ -243,7 +273,7 @@ useHead({
 
   .song-info {
     margin-top: 2rem;
-    height: 14rem;
+    height: 28rem;
     overflow-y: hidden;
     mask-image: linear-gradient(
       to bottom,
