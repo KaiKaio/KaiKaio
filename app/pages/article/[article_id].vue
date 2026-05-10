@@ -1,6 +1,6 @@
 <template>
   <article id="article" class="article">
-    <div class="article-detail">
+    <div ref="galleryRef" class="article-detail">
       <h1 class="article-title">{{ title }}</h1>
       <img class="article-cover" :src="cover" alt="文章封面">
       <div class="article-content" v-html="parseContent"></div>
@@ -11,6 +11,8 @@
 <script setup lang="ts">
 import { markdownToHTML } from '~/composables/marked'
 import 'highlight.js/styles/atom-one-light.css'
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'viewerjs'
 
 const route = useRoute()
 const { articleList, fetchArticleList } = useArticle()
@@ -19,6 +21,8 @@ const index = parseInt(route.params.article_id as string)
 const title = ref('')
 const cover = ref('')
 const parseContent = ref('')
+const galleryRef = ref<HTMLElement | null>(null)
+let viewer: Viewer | null = null
 
 onMounted(async () => {
   if (articleList.value.length === 0) {
@@ -28,7 +32,34 @@ onMounted(async () => {
   if (articleList.value[index]) {
     title.value = articleList.value[index].title
     cover.value = articleList.value[index].cover
-    parseContent.value = markdownToHTML(articleList.value[index].content)
+    parseContent.value = await markdownToHTML(articleList.value[index].content)
+  }
+  
+  await nextTick()
+  
+  if (galleryRef.value) {
+    viewer = new Viewer(galleryRef.value, {
+      title: false,
+      toolbar: {
+        zoomIn: true,
+        zoomOut: true,
+        oneToOne: true,
+        reset: true,
+        prev: true,
+        play: false,
+        next: true,
+        rotateLeft: true,
+        rotateRight: true,
+        flipHorizontal: true,
+        flipVertical: true
+      }
+    })
+  }
+})
+
+onUnmounted(() => {
+  if (viewer) {
+    viewer.destroy()
   }
 })
 
