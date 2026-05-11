@@ -133,7 +133,6 @@ const parseLrc = () => {
  * // 会找到时间区间包含 65.5 秒的歌词行并更新显示
  */
 const computedLrc = (newTime: number) => {
-  console.log(lrc.value, '=> lrc.value')
   for (let i = 0; i < lrc.value.length; i++) {
     // 如果是最后一行歌词，直接设置为当前内容
     if (i === lrc.value.length - 1) {
