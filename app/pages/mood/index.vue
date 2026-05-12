@@ -15,8 +15,9 @@
                 <title>Location</title>
                 <use xlink:href="#icon-address" />
               </svg>
-              <span>{{ comment.ip_location || '外太空~' }}</span>
+              <span>{{ comment.ip_location || '外太空' }}</span>
             </span>
+            <CommentUa :ua="comment.agent" />
           </div>
           <div class="comment-content">
             <div v-html="marked(comment.content)"></div>
@@ -29,8 +30,6 @@
             <span class="create_at">{{ comment.createDate }}</span>
           </div>
         </div>
-
-        <CommentUa :ua="comment.agent" />
       </li>
     </ul>
 
@@ -150,16 +149,6 @@ useHead({
       .comment-main {
         flex: 1;
       }
-      .agent {
-        width: 130px;
-        display: flex;
-        flex-direction: column;
-        font-size: 14px;
-        margin-left: 20px;
-        .browser {
-          margin-top: 3px;
-        }
-      }
       .comment-header {
         display: flex;
         align-items: center;
@@ -169,13 +158,30 @@ useHead({
           font-size: 16px;
         }
         .location {
+          width: 140px;
           font-size: 14px;
-          margin-left: 20px;
+          margin-left: 10px;
+          margin-right: 20px;
+          .icon {
+            margin-right: 3px;
+            font-size: 18px;
+          }
         }
       }
 
       .comment-content {
-        margin: .618rem 0;
+        margin: 1.8rem 0;
+        p {
+          margin: 0px;
+        }
+      }
+      .comment-footer {
+        display: flex;
+        align-items: center;
+        .icon {
+          font-size: 18px;
+          margin-right: 4px;
+        }
       }
     }
   }

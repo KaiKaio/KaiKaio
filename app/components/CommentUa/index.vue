@@ -28,7 +28,7 @@ const props = defineProps<{
 }>()
 
 const osIconsNameMap: Record<string, string> = {
-  'Mac OS': 'mac',
+  'macOS': 'mac',
   'Windows': 'windows',
   'Android': 'android',
   'Ubuntu': 'ubuntu',
@@ -56,6 +56,7 @@ const os = computed(() => parser.value.getOS())
 const browser = computed(() => parser.value.getBrowser())
 
 const osIconName = computed(() => {
+  console.log(os.value, '=> os.value')
   const osName = os.value.name
   return osName && osIconsNameMap[osName]
 })
@@ -65,3 +66,21 @@ const browserIconName = computed(() => {
   return browserName && browersIconsNameMap[browserName]
 })
 </script>
+
+<style lang="scss">
+.agent {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  gap: 20px;
+  .os, .browser {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    .icon {
+      font-size: 18px;
+      margin-right: 3px;
+    }
+  }
+}
+</style>
