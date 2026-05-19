@@ -15,9 +15,9 @@ import 'viewerjs/dist/viewer.css'
 import Viewer from 'viewerjs'
 
 const route = useRoute()
-const { articleList, fetchArticleList } = useArticle()
+const { fetchArticleDetailById } = useArticle()
 
-const index = parseInt(route.params.article_id as string)
+const article_id = route.params.article_id as string
 const title = ref('')
 const cover = ref('')
 const parseContent = ref('')
@@ -25,15 +25,20 @@ const galleryRef = ref<HTMLElement | null>(null)
 let viewer: Viewer | null = null
 
 onMounted(async () => {
-  if (articleList.value.length === 0) {
-    await fetchArticleList()
+  const data = await fetchArticleDetailById(article_id)
+  if (!data?.length) {
+    return
   }
-  
-  if (articleList.value[index]) {
-    title.value = articleList.value[index].title
-    cover.value = articleList.value[index].cover
-    parseContent.value = await markdownToHTML(articleList.value[index].content)
+
+  if (!data?.[0]?._id) {
+    return
   }
+
+  const articleDetail = data?.[0]
+
+  title.value = articleDetail.title
+  cover.value = articleDetail.cover
+  parseContent.value = await markdownToHTML(articleDetail.content)
   
   await nextTick()
   

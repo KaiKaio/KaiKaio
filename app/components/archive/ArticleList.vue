@@ -1,10 +1,10 @@
 <template>
   <div id="article-list">
-    <div class="article-list-item" v-for="(item, index) in articleList" :key="item.id">
+    <div class="article-list-item" v-for="(item, index) in articleList" :key="item._id">
       <div class="item-image" :style="{ backgroundImage: `url(${item.cover})` }"></div>
       <div class="item-text-content">
         <h5 class="item-title">
-          <NuxtLink :to="`/article/${index}`" :title="item.title" v-text="item.title" />
+          <NuxtLink :to="`/article/${item._id}`" :title="item.title" v-text="item.title" />
         </h5>
         <div class="item-content">{{ item.description }}</div>
         <div class="item-create-time">
@@ -64,6 +64,7 @@ onMounted(() => {
         overflow: hidden;
         font-size: $font-size-h6;
         -webkit-line-clamp: 4;
+        line-clamp: 4;
         -webkit-box-orient: vertical;
       }
       > .item-create-time {
