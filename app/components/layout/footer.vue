@@ -23,16 +23,27 @@ footer {
   padding: 6px 0px;
   line-height: 20px;
   font-size: $font-size-small;
+  
   > p {
     margin: 0px;
   }
+  
   a {
     text-decoration: none;
     color: inherit;
     transition: all .3s;
+    
     &:hover {
       color: burlywood;
     }
+  }
+}
+
+@include mobile {
+  footer {
+    padding: 4px 0px;
+    line-height: 16px;
+    font-size: $font-size-small * 0.9;
   }
 }
 </style>

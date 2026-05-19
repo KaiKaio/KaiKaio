@@ -133,11 +133,13 @@ useHead({
   min-height: 800px;
   color: #555;
   background-color: rgba($color: #fff, $alpha: 0.9);
+  
   .comment-list {
     padding: 0;
     margin: 0;
     list-style-type: none;
     margin-bottom: 1rem;
+    
     .comment-item {
       display: flex;
       width: 100%;
@@ -146,22 +148,28 @@ useHead({
       padding: $sm-gap $sm-gap $sm-gap ($lg-gap * 1);
       background-color: $module-hover-bg;
       @include background-transition();
+      
       .comment-main {
         flex: 1;
       }
+      
       .comment-header {
         display: flex;
         align-items: center;
         width: 100%;
+        flex-wrap: wrap;
+        
         .user-name {
           font-weight: bold;
           font-size: 16px;
         }
+        
         .location {
           width: 140px;
           font-size: 14px;
           margin-left: 10px;
           margin-right: 20px;
+          
           .icon {
             margin-right: 3px;
             font-size: 18px;
@@ -171,13 +179,16 @@ useHead({
 
       .comment-content {
         margin: 1.8rem 0;
+        
         p {
           margin: 0px;
         }
       }
+      
       .comment-footer {
         display: flex;
         align-items: center;
+        
         .icon {
           font-size: 18px;
           margin-right: 4px;
@@ -192,6 +203,7 @@ useHead({
     line-height: 2em;
     display: flex;
     margin-bottom: $gap;
+    
     > .name,
     > .email,
     > .site {
@@ -215,6 +227,71 @@ useHead({
     > .name,
     > .email {
       margin-right: $gap;
+    }
+  }
+}
+
+@include mobile {
+  #mood {
+    padding: $sm-gap;
+    min-height: 500px;
+    
+    .comment-list {
+      .comment-item {
+        padding: $xs-gap;
+        
+        .comment-header {
+          flex-direction: column;
+          align-items: flex-start;
+          
+          .user-name {
+            font-size: 14px;
+            margin-bottom: 4px;
+          }
+          
+          .location {
+            width: auto;
+            font-size: 12px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 4px;
+            
+            .icon {
+              font-size: 14px;
+            }
+          }
+        }
+        
+        .comment-content {
+          margin: 1rem 0;
+          font-size: $font-size-small;
+        }
+        
+        .comment-footer {
+          font-size: $font-size-small;
+          
+          .icon {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    
+    .user {
+      flex-direction: column;
+      height: auto;
+      
+      > .name,
+      > .email,
+      > .site {
+        margin-right: 0;
+        margin-bottom: $sm-gap;
+        
+        > input {
+          height: 2.5em;
+          line-height: 2.5em;
+        }
+      }
     }
   }
 }

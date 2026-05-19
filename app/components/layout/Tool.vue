@@ -18,6 +18,12 @@ const { isHideTool } = useGlobal()
   flex-shrink: 0;
 }
 
+@include tablet {
+  #tool {
+    width: 220px;
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 1s;

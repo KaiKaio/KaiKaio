@@ -66,10 +66,12 @@ useHead({
   margin-top: 5.5rem !important;
   color: #555;
   font-size: $font-size-base;
+  
   > .about-wrapper {
     padding: 4rem 1rem 1rem;
     position: relative;
     background-color: rgba($color: #fff, $alpha: 0.8);
+    
     > .avatar {
       position: absolute;
       top: -5.5rem;
@@ -82,38 +84,81 @@ useHead({
       border-radius: 100%;
       border: 0.3125rem solid hsla(0,0%,77.3%,0.5);
     }
+    
     > ul.list-info {
       list-style: none;
       padding-left: 12px;
+      
       >li {
         padding: 0.5rem 0rem;
         margin-bottom: 1.2rem;
         display: flex;
         align-items: baseline;
+        
         .about-icon {
           width: $font-size-large;
           height: $font-size-large;
           transition: all .3s;
+          
           &.Weibo {
             &:hover {
               fill: #e3091c;
             }
           }
+          
           &.Github {
             &:hover {
               fill: #000
             }
           }
         }
+        
         > .li-content {
           margin-left: 1.5rem;
           display: flex;
           column-gap: 1rem;
+          
           > a {
             display: block;
             width: $font-size-large;
             height: $font-size-large;
             color: #555;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  #about {
+    margin-top: 4rem !important;
+    
+    > .about-wrapper {
+      padding: 3rem 0.8rem 1rem;
+      
+      > .avatar {
+        width: 8rem;
+        height: 8rem;
+        top: -4rem;
+      }
+      
+      > ul.list-info {
+        padding-left: 8px;
+        
+        > li {
+          padding: 0.4rem 0rem;
+          margin-bottom: 1rem;
+          flex-wrap: wrap;
+          
+          .about-icon {
+            width: $font-size-base;
+            height: $font-size-base;
+          }
+          
+          > .li-content {
+            margin-left: 1rem;
+            flex: 1;
           }
         }
       }

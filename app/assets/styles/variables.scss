@@ -97,6 +97,11 @@ $mobile-aside-bg: #34393d;
 $mobile-aisde-transition: all $transition-time-slow ease-out;
 
 // breakpoints
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1200px;
+
+// legacy breakpoints (keep for compatibility)
 $small-breakpoint: 400px;
 $large-breakpoint: $container-width;
 
