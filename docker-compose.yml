@@ -14,5 +14,5 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - NUXT_API_BASE_URL=${NUXT_API_BASE_URL:-http://host.docker.internal:4000/api}
-      - NUXT_PUBLIC_API_BASE_URL=${NUXT_PUBLIC_API_BASE_URL:-http://host.docker.internal:4000/api}
+      - NUXT_API_BASE_URL=${NUXT_API_BASE_URL:-http://10.242.46.156:4000/api}
+      - NUXT_PUBLIC_API_BASE_URL=${NUXT_PUBLIC_API_BASE_URL:-http://10.242.46.156:4000/api}
