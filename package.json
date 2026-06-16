@@ -24,7 +24,7 @@
     "viewerjs": "^1.11.7"
   },
   "devDependencies": {
-    "nuxt": "^4.4.4",
+    "nuxt": "^4.4.7",
     "sass": "^1.99.0",
     "vue": "^3.4.0"
   }
